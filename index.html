@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HydroJet Drain Service — SEO Report | Jan–May 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{--primary:#1565C0;--accent:#F57C00;--bg:#EFF6FF;--card:#FFF;--text:#0D1B2A;--muted:#5A6A7A;--border:#C5D8F0;--green:#2E7D32;--orange:#E65100;--red:#C62828;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
+  .report-header{background:linear-gradient(135deg,#0D47A1 0%,#1565C0 55%,#F57C00 100%);color:white;padding:40px 48px 32px;position:relative;overflow:hidden;}
+  .report-header::before{content:"";position:absolute;top:-40px;right:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);}
+  .header-badge{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.8;margin-bottom:10px;}
+  .header-title{font-size:32px;font-weight:800;line-height:1.2;margin-bottom:6px;}
+  .header-sub{font-size:16px;opacity:.85;margin-bottom:20px;}
+  .header-meta{display:flex;gap:20px;flex-wrap:wrap;}
+  .header-meta span{font-size:12px;opacity:.75;}
+  .tab-nav{background:var(--primary);padding:0 24px;display:flex;gap:2px;flex-wrap:wrap;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+  .tab-btn{background:transparent;border:none;color:rgba(255,255,255,.65);padding:14px 16px;cursor:pointer;font-size:12.5px;font-weight:600;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+  .tab-btn:hover{color:white;background:rgba(255,255,255,.08);}
+  .tab-btn.active{color:white;border-bottom-color:var(--accent);background:rgba(255,255,255,.1);}
+  .tab-pane{display:none;padding:28px 32px;max-width:1400px;margin:0 auto;}
+  .tab-pane.active{display:block;}
+  .section-title{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:6px;border-left:4px solid var(--accent);padding-left:12px;}
+  .section-sub{color:var(--muted);font-size:13px;margin-bottom:20px;padding-left:16px;}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:28px;}
+  .kpi-card{background:var(--card);border-radius:10px;padding:18px 16px;border-top:4px solid var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.07);}
+  .kpi-card.green{border-top-color:var(--green);}.kpi-card.orange{border-top-color:var(--orange);}.kpi-card.red{border-top-color:var(--red);}
+  .kpi-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px;}
+  .kpi-value{font-size:28px;font-weight:800;color:var(--text);line-height:1;}
+  .kpi-delta{font-size:11px;margin-top:4px;}
+  .kpi-delta.up{color:var(--green);}.kpi-delta.down{color:var(--red);}.kpi-delta.neutral{color:var(--muted);}
+  .card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+  .card-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:14px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .chart-wrap{position:relative;height:260px;}
+  .tbl-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{background:var(--primary);color:white;padding:10px 12px;text-align:left;font-size:11.5px;font-weight:600;white-space:nowrap;}
+  tbody tr:nth-child(even){background:#F0F7FF;}
+  tbody tr:hover{background:#DBEAFE;}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;}
+  .badge-green{background:#E8F5E9;color:#1B5E20;}.badge-orange{background:#FFF3E0;color:#BF360C;}
+  .badge-red{background:#FFEBEE;color:#B71C1C;}.badge-blue{background:#E3F2FD;color:#0D47A1;}.badge-gray{background:#ECEFF1;color:#37474F;}
+  .ctr-good{color:var(--green);font-weight:700;}.ctr-warn{color:var(--orange);font-weight:700;}.ctr-bad{color:var(--red);font-weight:700;}
+  .rank-good{color:var(--green);font-weight:700;}.rank-warn{color:var(--orange);font-weight:700;}.rank-bad{color:var(--red);font-weight:700;}
+  .insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:20px;}
+  .insight-box{background:var(--card);border-radius:10px;padding:16px 18px;border-left:5px solid var(--primary);box-shadow:0 2px 6px rgba(0,0,0,.06);}
+  .insight-box.green{border-left-color:var(--green);}.insight-box.orange{border-left-color:var(--orange);}.insight-box.red{border-left-color:var(--red);}.insight-box.blue{border-left-color:#1976D2;}
+  .insight-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;}
+  .insight-box.green .insight-title{color:var(--green);}.insight-box.orange .insight-title{color:var(--orange);}.insight-box.red .insight-title{color:var(--red);}.insight-box.blue .insight-title{color:#1976D2;}
+  .insight-box p{font-size:13px;line-height:1.55;}
+  .gbp-alert{background:#FFF3E0;border:2px solid #F57C00;border-radius:10px;padding:18px 20px;margin-bottom:20px;}
+  .gbp-alert h3{color:#E65100;font-size:15px;margin-bottom:8px;}
+  .filter-btn{background:#EEF4FF;border:1px solid var(--border);padding:7px 14px;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:600;transition:all .15s;}
+  .filter-btn.active,.filter-btn:hover{background:var(--primary);color:white;border-color:var(--primary);}
+  @media(max-width:768px){.tab-pane{padding:16px;}.two-col{grid-template-columns:1fr;}.header-title{font-size:22px;}}
+</style>
+</head>
+<body>
+<div class="report-header">
+  <div class="header-badge">SEO Performance Report — No GBP</div>
+  <div class="header-title">HydroJet Drain Service</div>
+  <div class="header-sub">Hydro Jetting Specialists · Ocean County &amp; Central NJ | January – May 2026</div>
+  <div class="header-meta">
+    <span><strong>Website:</strong> hydrojetdrainservice.com</span>
+    <span><strong>Location:</strong> Toms River, NJ area · Ocean County</span>
+    <span><strong>Report Period:</strong> Jan 1 – May 31, 2026</span>
+    <span><strong>⚠️ No Google Business Profile active</strong></span>
+  </div>
+</div>
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="tab-summary">📋 Executive Summary</button>
+  <button class="tab-btn" data-tab="tab-gsc">🔎 Search Console</button>
+  <button class="tab-btn" data-tab="tab-ga4">📊 GA4 Analytics</button>
+  <button class="tab-btn" data-tab="tab-gbp">📍 GBP Setup Guide</button>
+  <button class="tab-btn" data-tab="tab-content">📝 Content Audit</button>
+  <button class="tab-btn" data-tab="tab-calendar">📅 Content Calendar</button>
+  <button class="tab-btn" data-tab="tab-actions">🚀 Priority Actions</button>
+</nav>
+
+<!-- EXECUTIVE SUMMARY -->
+<div id="tab-summary" class="tab-pane active">
+  <div class="section-title">Executive Summary</div>
+  <div class="section-sub">Jan–May 2026 · HydroJet Drain Service · Ocean County, NJ</div>
+
+  <div class="gbp-alert">
+    <h3>⚠️ No Google Business Profile — Biggest Single Gap</h3>
+    <p>HydroJet Drain Service has no Google Business Profile. This means the business is <strong>completely invisible in the Google Maps local pack</strong> — the 3 results that appear above organic listings for local service searches. For hydro jetting queries in Ocean County, NJ, every local competitor with a GBP appears before this site in search results. Setting up a GBP is the single highest-impact action available and costs nothing. See the <strong>GBP Setup Guide tab</strong> for step-by-step instructions.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card green"><div class="kpi-label">Homepage Position</div><div class="kpi-value">11.2</div><div class="kpi-delta up">Near page 1 — 81K impr</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Impressions Growth</div><div class="kpi-value">270%</div><div class="kpi-delta up">Oct 6.9K → May 25.6K</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">Avg. CTR</div><div class="kpi-value">0.12%</div><div class="kpi-delta down">Very low</div></div>
+    <div class="kpi-card"><div class="kpi-label">GSC Clicks (Jan-May)</div><div class="kpi-value">111</div><div class="kpi-delta neutral">Growing monthly</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Phone Conversions</div><div class="kpi-value">14</div><div class="kpi-delta neutral">GA4 tracked</div></div>
+    <div class="kpi-card"><div class="kpi-label">Form Submits</div><div class="kpi-value">25</div><div class="kpi-delta neutral">Total conversions</div></div>
+    <div class="kpi-card"><div class="kpi-label">GA4 Sessions</div><div class="kpi-value">849</div><div class="kpi-delta neutral">Jan–May 2026</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">Organic Sessions</div><div class="kpi-value">191</div><div class="kpi-delta neutral">22.5% of traffic</div></div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-box green">
+      <div class="insight-title">✅ Impressions Growing Fast</div>
+      <p>GSC impressions grew <strong>270% from October 2025 (6,919) to May 2026 (25,603)</strong> — exceptional growth for a relatively new site. Google is indexing more content and showing the site for more queries. The foundation is being built. The next step is converting impressions to clicks with better title tags, CTR optimization, and FAQ schema.</p>
+    </div>
+    <div class="insight-box green">
+      <div class="insight-title">✅ Homepage Near Page 1</div>
+      <p>The homepage ranks at <strong>position 11.2 with 81,053 impressions</strong> — on the edge of page 1 for a high volume of hydro jetting and drain service queries. A focused title tag optimization and FAQ schema addition could push it onto page 1, potentially tripling organic clicks overnight.</p>
+    </div>
+    <div class="insight-box red">
+      <div class="insight-title">🚨 Hydro Jetting Service Page — Position 44 (Page 5)</div>
+      <p>The <strong>hydro jetting service page</strong> — the core service this business specializes in — ranks at position 44.3 with 1,514 impressions. This is the most important service page on the site and it's on page 5. A complete rewrite with cost guide, process explanation, FAQ schema, and NJ-specific context would likely move it to page 1-2 within 60-90 days.</p>
+    </div>
+    <div class="insight-box red">
+      <div class="insight-title">🚨 Contact Page at Position 59 — Page 6</div>
+      <p>The contact page ranks at <strong>position 58.9</strong> — almost invisible. For local service businesses, the contact page should rank in the top 10-20 for "[business name] contact" and "[service] contact [city]" queries. This suggests a technical issue or near-empty page. Investigate and fix immediately.</p>
+    </div>
+    <div class="insight-box orange">
+      <div class="insight-title">⚠️ "hydrojet drain cleaning" Ranks #4.6</div>
+      <p>The query "hydrojet drain cleaning" generates <strong>5,109 impressions at position 4.6</strong> — near top 5 — but only 1 click. This may be a branded search (the business name matches the query). Optimizing the homepage title tag to include "Hydrojet Drain Cleaning" explicitly could dramatically improve CTR for this high-volume query.</p>
+    </div>
+    <div class="insight-box blue">
+      <div class="insight-title">💡 Aberdeen Township &amp; Beachwood Near Page 1</div>
+      <p>Aberdeen Township (pos 9.5) and Beachwood (pos 11.9) area pages are <strong>already near page 1</strong>. Adding FAQ schema to both pages this week could push them onto page 1 with minimal effort — these are quick wins that could add 5-10 organic leads per month.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Top 5 Priority Actions</div>
+    <table><thead><tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Set up Google Business Profile — the business is completely invisible in the local map pack</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>This week</td></tr>
+      <tr><td>2</td><td>Optimize homepage title tag for CTR and add FAQ schema (81K impressions at pos 11.2)</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>This week</td></tr>
+      <tr><td>3</td><td>Fix contact page — currently ranking position 58.9 (page 6) — check for technical issues</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>This week</td></tr>
+      <tr><td>4</td><td>Rewrite hydro jetting service page with cost guide, process, FAQ schema (pos 44.3)</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-orange">Medium</span></td><td>Week 1-2</td></tr>
+      <tr><td>5</td><td>Add FAQ schema to Aberdeen Township (pos 9.5) and Beachwood (pos 11.9) area pages</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-green">Low</span></td><td>This week</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- SEARCH CONSOLE -->
+<div id="tab-gsc" class="tab-pane">
+  <div class="section-title">Google Search Console</div>
+  <div class="section-sub">hydrojetdrainservice.com · Oct 2025–May 2026 · Growing site</div>
+  <div class="kpi-grid">
+    <div class="kpi-card green"><div class="kpi-label">Total Clicks (Jan-May)</div><div class="kpi-value">111</div><div class="kpi-delta up">Growing monthly</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Impressions Growth</div><div class="kpi-value">270%</div><div class="kpi-delta up">6.9K → 25.6K</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">Avg. CTR</div><div class="kpi-value">0.12%</div><div class="kpi-delta down">Far below average</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">Avg. Position</div><div class="kpi-value">18.1</div><div class="kpi-delta neutral">Page 2 average</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-title">Clicks and Impressions Growth Trend</div><div class="chart-wrap"><canvas id="gscTrendChart"></canvas></div></div>
+    <div class="card"><div class="card-title">Average Position Trend</div><div class="chart-wrap"><canvas id="gscPosChart"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Monthly GSC Performance</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Month</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Avg Position</th><th>Trend</th></tr></thead>
+      <tbody>
+        <tr><td>Oct 2025</td><td>19</td><td>6,919</td><td class="ctr-warn">0.27%</td><td class="rank-good">7.7</td><td class="rank-good">Strong start</td></tr>
+        <tr><td>Nov 2025</td><td>8</td><td>9,965</td><td class="ctr-bad">0.08%</td><td>15.0</td><td class="rank-bad">Position drop</td></tr>
+        <tr><td>Dec 2025</td><td>12</td><td>9,243</td><td class="ctr-bad">0.13%</td><td>13.6</td><td>Recovering</td></tr>
+        <tr><td><strong>Jan 2026</strong></td><td><strong>13</strong></td><td><strong>11,260</strong></td><td class="ctr-bad"><strong>0.12%</strong></td><td class="rank-warn"><strong>14.7</strong></td><td>Growing</td></tr>
+        <tr><td><strong>Feb 2026</strong></td><td><strong>30</strong></td><td><strong>22,056</strong></td><td class="ctr-bad"><strong>0.14%</strong></td><td class="rank-bad"><strong>20.7</strong></td><td class="rank-good">Best clicks month</td></tr>
+        <tr><td><strong>Mar 2026</strong></td><td><strong>20</strong></td><td><strong>14,759</strong></td><td class="ctr-bad"><strong>0.14%</strong></td><td class="rank-warn"><strong>18.0</strong></td><td>Stable</td></tr>
+        <tr><td><strong>Apr 2026</strong></td><td><strong>23</strong></td><td><strong>18,163</strong></td><td class="ctr-bad"><strong>0.13%</strong></td><td class="rank-warn"><strong>17.1</strong></td><td class="rank-good">Improving</td></tr>
+        <tr><td><strong>May 2026</strong></td><td><strong>25</strong></td><td><strong>25,603</strong></td><td class="ctr-bad"><strong>0.10%</strong></td><td class="rank-warn"><strong>18.1</strong></td><td class="rank-good">Highest impressions</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Top Keywords — Jan–May 2026</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Keyword</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Opportunity</th></tr></thead>
+      <tbody>
+        <tr><td>hydrojet drain cleaning</td><td>1</td><td>5,109</td><td class="ctr-bad">0.02%</td><td class="rank-good">4.6</td><td><span class="badge badge-red">CRITICAL — pos 4.6, 0 CTR</span></td></tr>
+        <tr><td>hydrojet drain cleaning near me</td><td>1</td><td>5,680</td><td class="ctr-bad">0.02%</td><td>16.5</td><td><span class="badge badge-orange">Near page 2</span></td></tr>
+        <tr><td>hydro jetting near me</td><td>3</td><td>3,445</td><td class="ctr-bad">0.09%</td><td class="rank-good">9.2</td><td><span class="badge badge-orange">Near page 1!</span></td></tr>
+        <tr><td>hydro jetting</td><td>1</td><td>1,530</td><td class="ctr-bad">0.07%</td><td class="rank-good">5.1</td><td><span class="badge badge-orange">Top 5, 0 CTR</span></td></tr>
+        <tr><td>hydro jetting service</td><td>3</td><td>592</td><td class="ctr-warn">0.51%</td><td>13.8</td><td><span class="badge badge-orange">Near page 1</span></td></tr>
+        <tr><td>clogged drain service</td><td>1</td><td>267</td><td class="ctr-warn">0.37%</td><td class="rank-good">4.6</td><td><span class="badge badge-green">Near top 5</span></td></tr>
+        <tr><td>sewer hydro jetting</td><td>1</td><td>53</td><td class="ctr-good">1.89%</td><td>7.2</td><td><span class="badge badge-green">Good CTR</span></td></tr>
+        <tr><td>hydro jet sewer cleaning</td><td>1</td><td>4</td><td class="ctr-good">25%</td><td>3.2</td><td><span class="badge badge-green">Top 3!</span></td></tr>
+        <tr><td>grease trap cleaning</td><td>1</td><td>34</td><td class="ctr-good">2.94%</td><td>9.7</td><td><span class="badge badge-green">Commercial angle</span></td></tr>
+        <tr><td>trenchless water line replacement near me</td><td>1</td><td>12</td><td class="ctr-good">8.33%</td><td>13.8</td><td><span class="badge badge-blue">Specialty service</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Top Pages — All Time (Oct 2025–May 2026)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Page</th><th>Impressions</th><th>Position</th><th>Clicks</th><th>CTR</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>/ (Homepage) <span class="badge badge-orange">Optimize NOW</span></td><td>81,053</td><td class="rank-warn">11.2</td><td>125</td><td class="ctr-bad">0.15%</td><td>Near page 1 but terrible CTR</td></tr>
+        <tr><td>/areas-served/toms-river/</td><td>6,970</td><td class="rank-bad">23.0</td><td>6</td><td class="ctr-bad">0.09%</td><td>Page 3 — expand content</td></tr>
+        <tr><td>/contact-us/ <span class="badge badge-red">CRITICAL</span></td><td>5,985</td><td class="rank-bad">58.9</td><td>4</td><td class="ctr-bad">0.07%</td><td>Page 6! Technical issue?</td></tr>
+        <tr><td>/services/water-line/</td><td>3,299</td><td class="rank-bad">21.5</td><td>1</td><td class="ctr-bad">0.03%</td><td>Near page 2 — add content</td></tr>
+        <tr><td>/areas-served/point-pleasant-beach/</td><td>3,145</td><td class="rank-warn">18.3</td><td>1</td><td class="ctr-bad">0.03%</td><td>Near page 2 — add content</td></tr>
+        <tr><td>/services/drain-cleaning/</td><td>2,862</td><td class="rank-bad">36.3</td><td>1</td><td class="ctr-bad">0.03%</td><td>Page 4 — rewrite needed</td></tr>
+        <tr><td>/areas-served/little-egg-harbor-township/</td><td>1,916</td><td class="rank-warn">19.8</td><td>1</td><td class="ctr-bad">0.05%</td><td>Near page 2 — expand</td></tr>
+        <tr><td>/services/hydro-jetting/ <span class="badge badge-red">CRITICAL</span></td><td>1,514</td><td class="rank-bad">44.3</td><td>1</td><td class="ctr-bad">0.07%</td><td>Core service on page 5!</td></tr>
+        <tr><td>/areas-served/aberdeen-township/ <span class="badge badge-green">Near pg 1</span></td><td>840</td><td class="rank-good">9.5</td><td>0</td><td class="ctr-bad">0%</td><td>Add FAQ schema immediately</td></tr>
+        <tr><td>/areas-served/beachwood/ <span class="badge badge-green">Near pg 1</span></td><td>732</td><td class="rank-warn">11.9</td><td>0</td><td class="ctr-bad">0%</td><td>Add FAQ schema immediately</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-box red">
+      <div class="insight-title">Why CTR Is So Low Despite Good Positions</div>
+      <p>The homepage ranks at 11.2 with 81K impressions but only 0.15% CTR. "Hydrojet drain cleaning" ranks #4.6 with 5,109 impressions but only 1 click (0.02%). This suggests the <strong>title tags don't match what searchers want to click</strong>. A plumber searching "hydro jetting near me" wants to see something like "HydroJet Drain Service | Ocean County NJ | Same-Day Hydro Jetting" not a generic business name.</p>
+    </div>
+    <div class="insight-box orange">
+      <div class="insight-title">October 2025 Had Position 7.7 — What Changed?</div>
+      <p>In October 2025 the average position was <strong>7.7</strong> — the best in the data set — then it dropped to 15 in November and has been recovering slowly since. This likely coincides with a Google algorithm update or a competitor gaining signals. The current trajectory (April 17.1, May 18.1) shows stable improvement but October's positions represent what's achievable again.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GA4 -->
+<div id="tab-ga4" class="tab-pane">
+  <div class="section-title">GA4 Analytics</div>
+  <div class="section-sub">Property 490204893 · Jan–May 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Total Sessions</div><div class="kpi-value">849</div><div class="kpi-delta neutral">Jan–May 2026</div></div>
+    <div class="kpi-card"><div class="kpi-label">Total Users</div><div class="kpi-value">630</div><div class="kpi-delta neutral">618 new users</div></div>
+    <div class="kpi-card"><div class="kpi-label">Engagement Rate</div><div class="kpi-value">45.3%</div><div class="kpi-delta up">Improving monthly</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Phone Conversions</div><div class="kpi-value">14</div><div class="kpi-delta neutral">Primary KPI</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Form Submits</div><div class="kpi-value">25</div><div class="kpi-delta neutral">Lead capture</div></div>
+    <div class="kpi-card"><div class="kpi-label">Page Views</div><div class="kpi-value">1,659</div><div class="kpi-delta neutral">~1.95 pages/session</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">Direct Traffic</div><div class="kpi-value">57%</div><div class="kpi-delta down">485 of 849 sessions</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Avg Duration</div><div class="kpi-value">4:05</div><div class="kpi-delta up">Good engagement</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-title">Monthly Sessions</div><div class="chart-wrap"><canvas id="sessionsChart"></canvas></div></div>
+    <div class="card"><div class="card-title">Traffic by Channel</div><div class="chart-wrap"><canvas id="channelsChart"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Monthly GA4 Performance</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Month</th><th>Sessions</th><th>Users</th><th>Engaged Sessions</th><th>Engagement Rate</th><th>Avg Duration</th></tr></thead>
+      <tbody>
+        <tr><td>Jan 2026</td><td>183</td><td>155</td><td>62</td><td class="ctr-bad">33.9%</td><td>2:05</td></tr>
+        <tr><td>Feb 2026</td><td>160</td><td>116</td><td>79</td><td class="ctr-warn">49.4%</td><td>5:20</td></tr>
+        <tr><td>Mar 2026</td><td>146</td><td>96</td><td>75</td><td class="ctr-warn">51.4%</td><td>6:43</td></tr>
+        <tr><td>Apr 2026</td><td>195</td><td>169</td><td>89</td><td class="ctr-warn">45.6%</td><td>1:52</td></tr>
+        <tr><td>May 2026</td><td>165</td><td>131</td><td>80</td><td class="ctr-warn">48.5%</td><td>4:50</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Traffic Sources</div>
+      <table><thead><tr><th>Channel</th><th>Sessions</th><th>Share</th><th>Conversions</th></tr></thead>
+      <tbody>
+        <tr><td>Direct</td><td>485</td><td class="rank-bad">57.1%</td><td>1</td></tr>
+        <tr><td>Organic Search</td><td>191</td><td>22.5%</td><td>9</td></tr>
+        <tr><td>Organic Social</td><td>65</td><td>7.7%</td><td>2</td></tr>
+        <tr><td>Paid Search</td><td>64</td><td>7.5%</td><td>2</td></tr>
+        <tr><td>Referral</td><td>39</td><td>4.6%</td><td>0</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="card-title">Conversions</div>
+      <table><thead><tr><th>Event</th><th>Count</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Phone Clicks</td><td><strong>14</strong></td><td><span class="badge badge-green">Primary KPI</span></td></tr>
+        <tr><td>Form Submits</td><td>25</td><td>Good lead capture</td></tr>
+        <tr><td>Form Starts</td><td>21</td><td>Tracking working</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-box red">
+      <div class="insight-title">57% Direct Traffic Is Unusually High</div>
+      <p>Direct traffic at 57% (485 of 849 sessions) means most visitors are typing the URL directly or coming from bookmarks. For a small local drain service, this typically means <strong>word-of-mouth referrals and existing customers</strong>. It's a sign of real business activity but also means organic growth hasn't kicked in yet. As the GBP gets set up and organic rankings improve, this balance will shift.</p>
+    </div>
+    <div class="insight-box green">
+      <div class="insight-title">Organic Converts Better Than Paid</div>
+      <p>Organic search: 9 conversions from 191 sessions = <strong>4.7% conversion rate</strong>. Paid search: 2 conversions from 64 sessions = 3.1%. Organic visitors are converting well. Growing organic from 191 to 500+ monthly sessions (achievable in 6 months with the content fixes in this report) would add roughly 15-20 additional leads per month at the current rate.</p>
+    </div>
+    <div class="insight-box orange">
+      <div class="insight-title">April Engagement Dipped Despite High Sessions</div>
+      <p>April had the most sessions (195) but the lowest average duration (1:52) and a lower engagement rate than February-March. This pattern suggests paid traffic or social traffic drove volume without quality. Monitor April's traffic source mix compared to Feb-March to identify the lower-quality source.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GBP SETUP GUIDE -->
+<div id="tab-gbp" class="tab-pane">
+  <div class="section-title">Google Business Profile Setup Guide</div>
+  <div class="section-sub">No GBP currently exists — this is the single highest-impact action available</div>
+
+  <div class="card" style="border-left:5px solid var(--red);background:#FFEBEE">
+    <div class="card-title" style="color:var(--red)">Why Setting Up a GBP Now Is Urgent</div>
+    <p style="font-size:13px;line-height:1.6;margin-bottom:10px">Without a GBP, HydroJet Drain Service is invisible in <strong>Google Maps and the local pack</strong> — the 3-result block that appears above organic results for local service queries. When someone in Toms River searches "hydro jetting near me" or "drain cleaning Ocean County NJ", every competitor with a GBP appears before this site, even if this site ranks higher in organic results. A GBP typically starts showing map pack impressions within 2-4 weeks of verification and can generate 20-50 additional lead touches per month with no ongoing cost.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Step-by-Step GBP Creation Guide</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Step</th><th>Action</th><th>Details</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Go to business.google.com</td><td>Sign in with the Google account you want to use for the business. Click "Add your business."</td><td>5 min</td></tr>
+        <tr><td>2</td><td>Enter business name</td><td>Use the exact legal business name: "HydroJet Drain Service" or the official registered name. Avoid keyword stuffing in the name.</td><td>2 min</td></tr>
+        <tr><td>3</td><td>Select business category</td><td>Primary: "Plumber" or "Drainage Service". Secondary categories: "Septic System Service", "Pipe Lining Service". Getting the category right is critical for map pack visibility.</td><td>5 min</td></tr>
+        <tr><td>4</td><td>Add service area</td><td>Select "Service area business" (not a storefront). Add all NJ cities served: Toms River, Point Pleasant Beach, Berkeley Township, Island Heights, Brick Township, Ocean Township, and others.</td><td>10 min</td></tr>
+        <tr><td>5</td><td>Add phone number and website</td><td>Use the main business phone number. Website: hydrojetdrainservice.com. These must match the NAP (Name, Address, Phone) on the website for consistency.</td><td>2 min</td></tr>
+        <tr><td>6</td><td>Verify the listing</td><td>Google will send a postcard to the business address or offer video verification. Video verification through the Google Business app is fastest (often same day). Postcard takes 5-14 days.</td><td>1-14 days</td></tr>
+        <tr><td>7</td><td>Complete the profile after verification</td><td>Add: business description, hours, services list, 10+ photos, and start collecting reviews. An 80%+ complete profile ranks significantly better than a basic listing.</td><td>1-2 hours</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GBP Business Description Template</div>
+    <div style="background:#F0F7FF;border-radius:8px;padding:16px;margin-bottom:12px;font-size:13px;line-height:1.7">
+      <p>"HydroJet Drain Service is Ocean County's hydro jetting and drain cleaning specialists. We use high-pressure water jetting to clear the toughest clogs — grease buildup, tree roots, scale, and debris that ordinary snaking can't remove. Our services include hydro jetting, drain cleaning, sewer camera inspection, trenchless pipe lining, pipe bursting, and water line repair.</p>
+      <p style="margin-top:8px">We serve Toms River, Point Pleasant Beach, Berkeley Township, Brick Township, Island Heights, Ocean Township, Beachwood, Aberdeen Township, and surrounding Ocean and Monmouth County communities. Same-day and emergency service available. Licensed and insured in New Jersey."</p>
+    </div>
+    <p style="font-size:12px;color:var(--muted)">Customize with specific license number and any specialties (commercial, residential, emergency).</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Services to Add to GBP Listing</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Service</th><th>Price (Optional)</th><th>Brief Description</th></tr></thead>
+      <tbody>
+        <tr><td>Hydro Jetting</td><td>Starting at $[X]</td><td>High-pressure water jetting to clear sewer and drain blockages — grease, roots, scale</td></tr>
+        <tr><td>Drain Cleaning</td><td>Starting at $[X]</td><td>Professional drain cleaning for kitchen, bathroom, and main sewer lines</td></tr>
+        <tr><td>Sewer Camera Inspection</td><td>$[X] - $[X]</td><td>Video inspection of sewer lines to identify blockages, damage, and tree root intrusion</td></tr>
+        <tr><td>Trenchless Pipe Lining</td><td>Contact for quote</td><td>CIPP no-dig pipe rehabilitation — repair damaged pipes without excavation</td></tr>
+        <tr><td>Pipe Bursting</td><td>Contact for quote</td><td>Replace deteriorated sewer pipes without major excavation</td></tr>
+        <tr><td>Water Line Repair</td><td>Contact for quote</td><td>Water main and service line repair and replacement</td></tr>
+        <tr><td>Grease Trap Cleaning</td><td>Contact for quote</td><td>Commercial grease trap cleaning and maintenance for restaurants and food service</td></tr>
+        <tr><td>Drain Snaking</td><td>Starting at $[X]</td><td>Mechanical drain snaking for minor clogs and blockages</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Post-Setup GBP Optimization — First 90 Days</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Week</th><th>Action</th><th>Goal</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1-2</td><td>Complete profile 100%, add 10+ photos (job photos, equipment, before/after), write business description</td><td>Strong initial listing that Google shows confidently</td></tr>
+        <tr><td>Week 2-4</td><td>Request 5 reviews from past customers — text them a direct review link. Ask them to mention the specific service and their city.</td><td>Reviews are the top local ranking factor. 5 reviews within 30 days = significant map pack boost</td></tr>
+        <tr><td>Week 4-8</td><td>Publish 2 GBP posts per week: 1 service spotlight, 1 result/tip. Example: "We just cleared a 10-year grease buildup in a Toms River restaurant — here's what hydro jetting found."</td><td>Post activity boosts visibility and profile views</td></tr>
+        <tr><td>Month 2-3</td><td>Add Q&A entries: "Do you serve [specific city]?", "How much does hydro jetting cost in NJ?", "Do you offer emergency drain service?" Answer each with keyword-rich responses.</td><td>Appear for more local queries, build profile completeness</td></tr>
+        <tr><td>Ongoing</td><td>2+ reviews/month, 1 new photo/week, post twice a week, respond to all reviews within 24 hours</td><td>Sustained map pack visibility and ranking improvement</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-box orange">
+      <div class="insight-title">Expected Results After GBP Setup</div>
+      <p>A properly optimized GBP in Ocean County, NJ for hydro jetting services typically generates: <strong>50-150 profile views per month</strong> within 60 days, <strong>5-15 direction requests/month</strong>, and <strong>5-20 website clicks/month</strong> from the GBP. With 5+ reviews and active posting, these numbers increase significantly within 90 days.</p>
+    </div>
+    <div class="insight-box blue">
+      <div class="insight-title">NAP Consistency Is Critical</div>
+      <p>The Name, Address, and Phone (NAP) on the GBP must exactly match the website. Before creating the GBP, verify the phone number and address format on hydrojetdrainservice.com match exactly what will go on the GBP. Inconsistencies between the website and GBP reduce map pack ranking ability.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT AUDIT -->
+<div id="tab-content" class="tab-pane">
+  <div class="section-title">Content Audit — All Pages</div>
+  <div class="section-sub">30 pages with GSC data · Oct 2025–May 2026 · Ocean County, NJ drain service</div>
+
+  <div class="kpi-grid" style="margin-bottom:16px">
+    <div class="kpi-card red"><div class="kpi-label">Critical (fix now)</div><div class="kpi-value">3</div><div class="kpi-delta down">5K+ impr, pos >20</div></div>
+    <div class="kpi-card orange"><div class="kpi-label">High Priority</div><div class="kpi-value">6</div><div class="kpi-delta down">2K+ impr, needs work</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Near Page 1</div><div class="kpi-value">5</div><div class="kpi-delta up">Pos 9-15, add schema</div></div>
+    <div class="kpi-card"><div class="kpi-label">Expand / Improve</div><div class="kpi-value">16</div><div class="kpi-delta neutral">Area pages need content</div></div>
+  </div>
+
+  <div class="card" style="padding:14px 18px;margin-bottom:14px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="filterP('ALL')" class="filter-btn active" data-pf="ALL">All Pages</button>
+      <button onclick="filterP('CRITICAL')" class="filter-btn" data-pf="CRITICAL" style="background:#FFEBEE;color:#B71C1C">Critical</button>
+      <button onclick="filterP('HIGH')" class="filter-btn" data-pf="HIGH" style="background:#FFF3E0;color:#BF360C">High</button>
+      <button onclick="filterP('MEDIUM')" class="filter-btn" data-pf="MEDIUM" style="background:#ECEFF1;color:#37474F">Medium</button>
+      <button onclick="filterP('MONITOR')" class="filter-btn" data-pf="MONITOR" style="background:#E3F2FD;color:#0D47A1">Monitor</button>
+      <button onclick="filterP('GOOD')" class="filter-btn" data-pf="GOOD" style="background:#E8F5E9;color:#1B5E20">Good/Near pg 1</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">All Pages — Content Audit and Recommendations</div>
+    <div class="tbl-wrap"><table id="ptable">
+      <thead><tr><th style="width:90px">Priority</th><th>Page</th><th style="text-align:right;width:90px">Impressions</th><th style="text-align:right;width:70px">Position</th><th style="text-align:right;width:55px">Clicks</th><th style="text-align:right;width:55px">CTR</th><th>Recommendation</th></tr></thead>
+      <tbody id="ptbody">
+<tr><td><span class="badge badge-green">GOOD</span></td><td style="font-size:12px;word-break:break-all">/</td><td style="text-align:right">81,053</td><td class="rank-good" style="text-align:right">11.2</td><td style="text-align:right">125</td><td class="ctr-bad" style="text-align:right">0.15%</td><td style="font-size:11.5px">Homepage at pos 11.2 — near page 1 for 81K impressions. Add FAQ schema, optimize title tag for CTR, add Service schema, internal links to all service pages. Target: "hydro jetting service [city NJ]" in title.</td></tr>
+<tr><td><span class="badge badge-red">CRITICAL</span></td><td style="font-size:12px;word-break:break-all">/areas-served/toms-river/</td><td style="text-align:right">6,970</td><td class="rank-warn" style="text-align:right">23.0</td><td style="text-align:right">6</td><td class="ctr-bad" style="text-align:right">0.09%</td><td style="font-size:11.5px">Highest-traffic area page (6,970 impr, pos 23). Expand to 700+ words: Toms River neighborhoods, common drain issues, cost guide, FAQ schema, link from homepage.</td></tr>
+<tr><td><span class="badge badge-red">CRITICAL</span></td><td style="font-size:12px;word-break:break-all">/contact-us/</td><td style="text-align:right">5,985</td><td class="rank-bad" style="text-align:right">58.9</td><td style="text-align:right">4</td><td class="ctr-bad" style="text-align:right">0.07%</td><td style="font-size:11.5px">CRITICAL: Contact page at position 58.9 — page 6! Should rank near page 1 for "hydro jet drain service contact" queries. Check for technical issue, indexing block, or thin content. Add LocalBusiness schema, ensure page is crawlable.</td></tr>
+<tr><td><span class="badge badge-orange">HIGH</span></td><td style="font-size:12px;word-break:break-all">/services/water-line/</td><td style="text-align:right">3,299</td><td class="rank-warn" style="text-align:right">21.5</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.03%</td><td style="font-size:11.5px">Water line page (3,299 impr, pos 21.5) — near page 2. Add cost guide ($500-$3K), trenchless vs excavation comparison, FAQ schema, Ocean County permit info.</td></tr>
+<tr><td><span class="badge badge-orange">HIGH</span></td><td style="font-size:12px;word-break:break-all">/areas-served/point-pleasant-beach/</td><td style="text-align:right">3,145</td><td class="rank-warn" style="text-align:right">18.3</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.03%</td><td style="font-size:11.5px">Pos 18.3, near page 2. Expand with Point Pleasant Beach local content: beach community pipe issues, seasonal service demand, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-orange">HIGH</span></td><td style="font-size:12px;word-break:break-all">/services/drain-cleaning/</td><td style="text-align:right">2,862</td><td class="rank-bad" style="text-align:right">36.3</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.03%</td><td style="font-size:11.5px">Drain cleaning service page (2,862 impr, pos 36.3) — page 4 for core service! Add cost guide, snaking vs hydro jetting comparison, FAQ schema, emergency service angle.</td></tr>
+<tr><td><span class="badge badge-orange">HIGH</span></td><td style="font-size:12px;word-break:break-all">/about-us/</td><td style="text-align:right">2,207</td><td class="rank-bad" style="text-align:right">39.4</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.05%</td><td style="font-size:11.5px">About page at pos 39.4. Add team info, certifications, license numbers (NJ contractor license), years in business, FAQ schema. This is a trust page.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/little-egg-harbor-township/</td><td style="text-align:right">1,916</td><td class="rank-warn" style="text-align:right">19.8</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.05%</td><td style="font-size:11.5px">Near page 2 (pos 19.8). Add local content for coastal community, seasonal service peaks, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/berkeley-township/</td><td style="text-align:right">1,772</td><td class="rank-bad" style="text-align:right">37.1</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 37.1 — page 4. Expand with Berkeley Township neighborhoods, older home pipe context, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/island-heights/</td><td style="text-align:right">1,756</td><td class="rank-warn" style="text-align:right">18.5</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 18.5 — near page 2. Add Island Heights local content, seasonal drain issues in coastal area, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/colts-neck/</td><td style="text-align:right">1,722</td><td class="rank-warn" style="text-align:right">18.2</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 18.2 — near page 2. Colts Neck equestrian and estate properties context, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/</td><td style="text-align:right">1,693</td><td class="rank-bad" style="text-align:right">34.8</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.06%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/lakehurst/</td><td style="text-align:right">1,662</td><td class="rank-warn" style="text-align:right">19.8</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 19.8 — near page 2. Local content, FAQ schema, cost guide.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/services/hydro-jetting/</td><td style="text-align:right">1,514</td><td class="rank-bad" style="text-align:right">44.3</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.07%</td><td style="font-size:11.5px">CRITICAL: Hydro jetting SERVICE page at pos 44.3 — page 5! This is the main service. Full rewrite: what is hydro jetting, cost ($300-$600), when needed vs snaking, residential vs commercial, FAQ schema, NJ context.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/services/</td><td style="text-align:right">1,468</td><td class="rank-bad" style="text-align:right">41.5</td><td style="text-align:right">2</td><td class="ctr-bad" style="text-align:right">0.14%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/services/trenchless-pipe-lining/</td><td style="text-align:right">1,467</td><td class="rank-warn" style="text-align:right">19.4</td><td style="text-align:right">2</td><td class="ctr-bad" style="text-align:right">0.14%</td><td style="font-size:11.5px">Trenchless pipe lining (pos 19.4) — near page 2. Add cost guide, CIPP process, NJ building code context, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/roselle/</td><td style="text-align:right">1,380</td><td class="rank-warn" style="text-align:right">18.5</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.07%</td><td style="font-size:11.5px">Pos 18.5. Roselle local content, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/services/pipe-bursting/</td><td style="text-align:right">1,373</td><td class="rank-bad" style="text-align:right">37.8</td><td style="text-align:right">1</td><td class="ctr-bad" style="text-align:right">0.07%</td><td style="font-size:11.5px">Pipe bursting page (pos 37.8). Add process explanation, cost vs excavation, eligible pipe types, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-blue">MONITOR</span></td><td style="font-size:12px;word-break:break-all">/areas-served/brick-township/</td><td style="text-align:right">1,335</td><td class="rank-warn" style="text-align:right">14.8</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 14.8 — near page 2. Expand with Brick Township local content, FAQ schema. Close to page 1.</td></tr>
+<tr><td><span class="badge badge-blue">MONITOR</span></td><td style="font-size:12px;word-break:break-all">/areas-served/aberdeen-township/</td><td style="text-align:right">840</td><td class="rank-good" style="text-align:right">9.5</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 9.5 — near page 1! Add FAQ schema immediately + expand content. Aberdeen Township drain service — close to ranking.</td></tr>
+<tr><td><span class="badge badge-gray">MEDIUM</span></td><td style="font-size:12px;word-break:break-all">/areas-served/ocean-township/</td><td style="text-align:right">812</td><td class="rank-bad" style="text-align:right">26.5</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 26.5. Add Ocean Township local context, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-blue">MONITOR</span></td><td style="font-size:12px;word-break:break-all">/areas-served/beachwood/</td><td style="text-align:right">732</td><td class="rank-good" style="text-align:right">11.9</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Pos 11.9 — near page 1. Add FAQ schema + local Beachwood content. Very close to page 1.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/beach-haven/</td><td style="text-align:right">399</td><td class="rank-warn" style="text-align:right">22.5</td><td style="text-align:right">2</td><td class="ctr-warn" style="text-align:right">0.5%</td><td style="font-size:11.5px">Pos 22.5. Beach community seasonal service context, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/services/drain-snaking/</td><td style="text-align:right">334</td><td class="rank-bad" style="text-align:right">29.5</td><td style="text-align:right">1</td><td class="ctr-warn" style="text-align:right">0.3%</td><td style="font-size:11.5px">Drain snaking (pos 29.5). Add comparison with hydro jetting, when each is needed, cost difference, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/barnegat-township/</td><td style="text-align:right">168</td><td class="rank-warn" style="text-align:right">18.8</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Near page 2. Local content, FAQ schema.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/lavallette/</td><td style="text-align:right">147</td><td class="rank-bad" style="text-align:right">45.2</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/millstone/</td><td style="text-align:right">109</td><td class="rank-bad" style="text-align:right">41.3</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/manalapan-township/</td><td style="text-align:right">102</td><td class="rank-bad" style="text-align:right">55.5</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-gray">LOW</span></td><td style="font-size:12px;word-break:break-all">/areas-served/long-beach/</td><td style="text-align:right">61</td><td class="rank-bad" style="text-align:right">36.6</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+<tr><td><span class="badge badge-blue">MONITOR</span></td><td style="font-size:12px;word-break:break-all">/accessibility-statement/</td><td style="text-align:right">1</td><td class="rank-good" style="text-align:right">9</td><td style="text-align:right">0</td><td class="ctr-bad" style="text-align:right">0%</td><td style="font-size:11.5px">Add FAQ schema, local NJ content, cost guide, internal links.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px">What Every Page Is Missing</div>
+  <div class="insight-grid">
+    <div class="insight-box red"><div class="insight-title">No FAQPage Schema Anywhere</div><p>Zero FAQ sections or FAQPage schema on any page. Adding 4-5 questions to service pages and the top area pages targets People Also Ask boxes and AI Overviews. This is the fastest ranking improvement available for this site.</p></div>
+    <div class="insight-box red"><div class="insight-title">No Cost Transparency</div><p>No pricing on any service page. NJ customers searching "hydro jetting near me" want to know cost ranges ($300-$600 typical for residential). Pages with cost information convert better and rank higher.</p></div>
+    <div class="insight-box orange"><div class="insight-title">Area Pages Are Thin</div><p>All area pages appear to be short template clones with only the city name changed. Each needs 500+ words of unique content: local context, common pipe issues in that community, and a link to the nearest major service area.</p></div>
+    <div class="insight-box blue"><div class="insight-title">No NJ-Specific Context</div><p>Ocean County has specific plumbing challenges: sandy soil in coastal areas affects pipe settling, seasonal flooding in low-lying areas, older homes in Toms River with original cast iron, coastal salt air corrosion. Adding this context makes pages uniquely relevant to local searchers.</p></div>
+  </div>
+</div>
+
+<!-- CONTENT CALENDAR -->
+<div id="tab-calendar" class="tab-pane">
+  <div class="section-title">Content Calendar — Jun–Nov 2026</div>
+  <div class="section-sub">Service page fixes + seasonal blog content for Ocean County NJ</div>
+  <div class="card">
+    <div class="card-title">Service and Area Page Fix Schedule</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Month</th><th>Page</th><th>GSC Signal</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Jun 2026</td><td>Homepage</td><td>81,053 impr, pos 11.2</td><td>New title tag: "HydroJet Drain Service | Ocean County NJ | Same-Day Hydro Jetting &amp; Drain Cleaning" + FAQ schema + Service schema</td></tr>
+        <tr><td>Jun 2026</td><td>/contact-us/</td><td>5,985 impr, pos 58.9</td><td>URGENT: Check for technical issue (crawl block, noindex). If clean, add content, LocalBusiness schema, contact form optimization.</td></tr>
+        <tr><td>Jun 2026</td><td>/services/hydro-jetting/</td><td>1,514 impr, pos 44.3</td><td>Full rewrite: what is hydro jetting, cost ($300-$600), when vs snaking, process, NJ ocean county context, FAQ schema</td></tr>
+        <tr><td>Jul 2026</td><td>/areas-served/toms-river/</td><td>6,970 impr, pos 23</td><td>Expand to 700+ words: Toms River neighborhoods, older home pipe context, cost guide, FAQ schema</td></tr>
+        <tr><td>Jul 2026</td><td>/services/drain-cleaning/</td><td>2,862 impr, pos 36.3</td><td>Rewrite with: snaking vs hydro jetting comparison, cost guide, emergency drain service, FAQ schema</td></tr>
+        <tr><td>Jul 2026</td><td>Aberdeen + Beachwood area pages</td><td>Both near pos 10</td><td>Add FAQ schema immediately (these are nearest to page 1)</td></tr>
+        <tr><td>Aug 2026</td><td>/services/water-line/</td><td>3,299 impr, pos 21.5</td><td>Cost guide ($500-$3K), trenchless vs excavation, NJ permit context, FAQ schema</td></tr>
+        <tr><td>Aug 2026</td><td>/areas-served/point-pleasant-beach/ + brick-township</td><td>Both near pos 15-18</td><td>Expand with coastal community context, FAQ schema</td></tr>
+        <tr><td>Sep 2026</td><td>/services/trenchless-pipe-lining/</td><td>Pos 19.4 — near page 2</td><td>CIPP process, cost, NJ code context, FAQ schema — already near page 2</td></tr>
+        <tr><td>Oct 2026</td><td>/services/pipe-bursting/ + /services/drain-snaking/</td><td>Pos 29-37</td><td>Comparison content, cost guides, FAQ schema</td></tr>
+        <tr><td>Nov 2026</td><td>Remaining area pages (Island Heights, Lakehurst, etc.)</td><td>Pos 18-20 range</td><td>Unique local content, FAQ schema, cost guide for each</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="section-title" style="margin-top:24px">Blog Topics — Jun–Nov 2026 (4 Posts/Month)</div>
+  <div class="card"><div class="card-title" style="background:var(--primary);color:white;margin:-20px -20px 14px;padding:12px 20px;border-radius:10px 10px 0 0">June–November 2026 — 24 Blog Posts</div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Month</th><th>Title</th><th>Target Keyword</th><th>Key Points</th></tr></thead>
+    <tbody>
+      <tr><td>Jun</td><td>How Much Does Hydro Jetting Cost in Ocean County NJ? (2026)</td><td>hydro jetting cost NJ</td><td>$300-$600 residential, $500-$1,500 commercial, factors affecting cost, FAQ schema</td></tr>
+      <tr><td>Jun</td><td>Hydro Jetting vs Drain Snaking: Which Does Your Ocean County Home Need?</td><td>hydro jetting vs drain snake NJ</td><td>Comparison table, when each is appropriate, cost difference, FAQ schema</td></tr>
+      <tr><td>Jun</td><td>Signs Your Toms River Drain Needs Hydro Jetting (Not Just Snaking)</td><td>drain cleaning toms river nj</td><td>7 signs, why snaking isn't enough, hydro jet process, FAQ schema</td></tr>
+      <tr><td>Jun</td><td>Commercial Grease Trap Cleaning in Ocean County NJ: What Restaurants Need to Know</td><td>grease trap cleaning Ocean County NJ</td><td>NJ health code requirements, frequency, cost, commercial hydro jetting</td></tr>
+      <tr><td>Jul</td><td>Tree Root Intrusion in Ocean County Sewer Lines: Detection and Removal</td><td>tree root sewer line NJ</td><td>Common trees in Ocean County that invade drains, hydro jetting vs CIPP fix, cost</td></tr>
+      <tr><td>Jul</td><td>How Much Does Trenchless Pipe Lining Cost in NJ? (2026 Guide)</td><td>trenchless pipe lining cost NJ</td><td>CIPP cost $80-$200/ft, NJ permit requirements, vs excavation, FAQ schema</td></tr>
+      <tr><td>Jul</td><td>Emergency Drain Service in Toms River NJ: What to Do When Your Drain Backs Up</td><td>emergency drain cleaning toms river NJ</td><td>Emergency steps, why backups happen, when to call, same-day service</td></tr>
+      <tr><td>Jul</td><td>Ocean County Sandy Soil and Your Pipes: Why Drains Fail Here</td><td>drain problems ocean county NJ</td><td>Unique to NJ shore: sandy soil pipe settling, seasonal issues, prevention</td></tr>
+      <tr><td>Aug</td><td>How Much Does Water Line Repair Cost in New Jersey? (2026)</td><td>water line repair cost NJ</td><td>$500-$3K service line, trenchless vs excavation, NJ permit costs</td></tr>
+      <tr><td>Aug</td><td>Hydro Jetting for Restaurant Drains in Ocean County NJ</td><td>commercial drain cleaning restaurant NJ</td><td>Restaurant-specific grease issues, frequency, NJ health department requirements</td></tr>
+      <tr><td>Aug</td><td>How to Choose the Best Drain Cleaning Company in Toms River NJ</td><td>drain cleaning company toms river NJ</td><td>8 criteria, NJ license verification, red flags, questions to ask</td></tr>
+      <tr><td>Aug</td><td>Sewer Camera Inspection: What Ocean County Homebuyers Need to Know</td><td>sewer camera inspection NJ</td><td>Pre-purchase inspection, cost, what we look for, shore property context</td></tr>
+      <tr><td>Sep</td><td>Fall Drain Maintenance Checklist for Ocean County Homeowners</td><td>fall drain maintenance NJ</td><td>Seasonal prep, leaf clog prevention, winter pipe protection at the shore</td></tr>
+      <tr><td>Sep</td><td>Pipe Bursting Explained: No-Dig Sewer Replacement for NJ Homes</td><td>pipe bursting NJ</td><td>How it works, cost, vs excavation, NJ homeowner guide</td></tr>
+      <tr><td>Sep</td><td>Why Does My Drain Keep Clogging After Snaking? (And the Permanent Fix)</td><td>drain keeps clogging NJ</td><td>Recurring clogs, why snaking doesn't solve root problems, hydro jetting solution</td></tr>
+      <tr><td>Sep</td><td>Drain Cleaning for Beachfront and Shore Properties: Special Considerations</td><td>drain cleaning shore property NJ</td><td>Salt air corrosion, seasonal flooding, sand-loaded drains, vacation home maintenance</td></tr>
+      <tr><td>Oct</td><td>Winter Drain and Sewer Preparation for Ocean County Homes</td><td>winter sewer maintenance NJ</td><td>Freeze prevention, vacation home winterization at the NJ shore, pipe insulation</td></tr>
+      <tr><td>Oct</td><td>What Is Hydro Jetting? A Plain-English Guide for NJ Homeowners</td><td>what is hydro jetting</td><td>Complete explainer, 3000-4000 PSI water pressure, when needed, cost, FAQ schema</td></tr>
+      <tr><td>Oct</td><td>CIPP Pipe Lining for Ocean County Homes: Is Your Pipe a Candidate?</td><td>CIPP pipe lining ocean county NJ</td><td>Eligible pipe types, process, cost, no-dig benefit, NJ context</td></tr>
+      <tr><td>Oct</td><td>How to Handle a Main Sewer Line Backup in Toms River NJ</td><td>main sewer line backup toms river</td><td>Emergency steps, what causes main line backups, hydro jetting solution, cost</td></tr>
+      <tr><td>Nov</td><td>HydroJet Drain Service 2026 Year in Review: Ocean County Results</td><td>drain service ocean county NJ</td><td>Top jobs, client results, service highlights, EEAT brand builder</td></tr>
+      <tr><td>Nov</td><td>Drain Cleaning Cost Guide: What NJ Homeowners Pay in 2026</td><td>drain cleaning cost NJ</td><td>Cost by drain type, snaking vs hydro jetting, emergency premium</td></tr>
+      <tr><td>Nov</td><td>The Homeowner's Guide to Sewer and Drain Maintenance in Ocean County</td><td>sewer maintenance Ocean County NJ</td><td>Annual maintenance schedule, what not to flush, prevention tips, when to call</td></tr>
+      <tr><td>Nov</td><td>Hydro Jetting Near Me: Why Ocean County Homeowners Are Switching From Snaking</td><td>hydro jetting near me ocean county</td><td>Why hydro jetting is replacing snaking for recurring clogs, process, cost, FAQ</td></tr>
+    </tbody>
+  </table></div></div>
+</div>
+
+<!-- PRIORITY ACTIONS -->
+<div id="tab-actions" class="tab-pane">
+  <div class="section-title">Priority Action Plan</div>
+  <div class="section-sub">Ranked by impact · HydroJet Drain Service · Summer 2026</div>
+  <div class="card">
+    <div class="card-title">Top 10 Priority Actions</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th><th>Est. Gain</th><th>Timeline</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Set up Google Business Profile (step-by-step guide in GBP tab) — zero local map pack visibility without it</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>50-150 profile views/mo + map pack leads</td><td>This week</td></tr>
+        <tr><td>2</td><td>Optimize homepage title tag for CTR + add FAQ schema (81K impressions at pos 11.2)</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>+50-150 monthly clicks from existing rankings</td><td>This week</td></tr>
+        <tr><td>3</td><td>Fix contact page — investigate why it ranks position 58 (check for noindex, thin content, crawl block)</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-green">Low</span></td><td>Contact page should rank top 20</td><td>This week</td></tr>
+        <tr><td>4</td><td>Add FAQ schema to Aberdeen Township (pos 9.5) and Beachwood (pos 11.9) — both near page 1</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-green">Low</span></td><td>+5-10 clicks/mo from near-page-1 rankings</td><td>This week</td></tr>
+        <tr><td>5</td><td>Rewrite hydro jetting service page (pos 44.3) — core service on page 5</td><td><span class="badge badge-red">CRITICAL</span></td><td><span class="badge badge-orange">Medium</span></td><td>+20-50 monthly clicks within 60 days</td><td>Week 1-2</td></tr>
+        <tr><td>6</td><td>Expand Toms River area page (6,970 impr, pos 23) to 700+ words with local content</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-orange">Medium</span></td><td>+10-25 monthly clicks</td><td>Week 2</td></tr>
+        <tr><td>7</td><td>Add cost ranges to all service pages — users are searching for "$X drain cleaning near me" pricing queries</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-green">Low</span></td><td>Better CTR, higher conversion rate</td><td>Week 1</td></tr>
+        <tr><td>8</td><td>Request 5 Google reviews from past customers as soon as GBP is set up</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-green">Low</span></td><td>Essential for map pack rankings</td><td>Week 3-4</td></tr>
+        <tr><td>9</td><td>Rewrite drain cleaning service page (pos 36.3) with snaking comparison, cost guide, FAQ schema</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-orange">Medium</span></td><td>+15-30 monthly clicks</td><td>Week 2-3</td></tr>
+        <tr><td>10</td><td>Launch blog content (4 posts/month) focused on Ocean County NJ hydro jetting queries</td><td><span class="badge badge-orange">HIGH</span></td><td><span class="badge badge-orange">Medium</span></td><td>Compounds over 6-12 months</td><td>Month 2</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-title">90-Day Roadmap</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Timeline</th><th>Actions</th><th>Expected Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1</td><td>Create GBP, optimize homepage title/FAQ schema, fix contact page, add FAQ schema to Aberdeen + Beachwood, add pricing to service pages</td><td>GBP live; homepage CTR improves; near-page-1 pages push to page 1</td></tr>
+        <tr><td>Week 2-3</td><td>Rewrite hydro jetting service page, expand Toms River area page, rewrite drain cleaning page, request first 5 GBP reviews</td><td>Core service pages moving up; GBP starting to show in map pack</td></tr>
+        <tr><td>Month 2</td><td>Water line page expansion, Brick/Point Pleasant area page content, trenchless page upgrade, launch blog (4 posts)</td><td>More area pages ranking page 1-2; blog traffic begins</td></tr>
+        <tr><td>Month 3</td><td>Remaining area page expansions, continue blog cadence, GBP posting schedule established (2x/week)</td><td>Organic sessions growing toward 400+ per month (vs 191 now); GBP generating 20+ leads/month</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+function filterP(p) {
+  document.querySelectorAll('[data-pf]').forEach(b => b.classList.remove('active'));
+  document.querySelector('[data-pf="'+p+'"]').classList.add('active');
+  document.querySelectorAll('#ptbody tr').forEach(row => {
+    if (p === 'ALL') { row.style.display = ''; return; }
+    const badge = row.querySelector('.badge');
+    row.style.display = badge && badge.textContent.trim() === p ? '' : 'none';
+  });
+}
+const BL='rgba(21,101,192,0.8)', OR='rgba(245,124,0,0.8)', GR='rgba(46,125,50,0.8)', RD='rgba(198,40,40,0.8)', GY='rgba(90,106,122,0.7)';
+new Chart(document.getElementById('gscTrendChart'), {
+  type:'line', data:{
+    labels:['Oct25','Nov25','Dec25','Jan26','Feb26','Mar26','Apr26','May26'],
+    datasets:[
+      {label:'Clicks',data:[19,8,12,13,30,20,23,25],borderColor:BL,backgroundColor:'rgba(21,101,192,.1)',tension:.3,fill:true,yAxisID:'y'},
+      {label:'Impressions/1000',data:[6.9,10.0,9.2,11.3,22.1,14.8,18.2,25.6],borderColor:OR,borderDash:[5,5],tension:.3,yAxisID:'y1'}
+    ]
+  }, options:{responsive:true,maintainAspectRatio:false,scales:{y:{position:'left',title:{display:true,text:'Clicks'}},y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'Impr (000s)'}}}}
+});
+new Chart(document.getElementById('gscPosChart'), {
+  type:'line', data:{
+    labels:['Oct25','Nov25','Dec25','Jan26','Feb26','Mar26','Apr26','May26'],
+    datasets:[{label:'Avg Position',data:[7.7,15.0,13.6,14.7,20.7,18.0,17.1,18.1],borderColor:RD,backgroundColor:'rgba(198,40,40,.08)',tension:.3,fill:true,pointRadius:5}]
+  }, options:{responsive:true,maintainAspectRatio:false,scales:{y:{reverse:true,min:5,max:25,title:{display:true,text:'Position (lower=better)'}}}}
+});
+new Chart(document.getElementById('sessionsChart'), {
+  type:'bar', data:{
+    labels:['Jan 26','Feb 26','Mar 26','Apr 26','May 26'],
+    datasets:[
+      {label:'Sessions',data:[183,160,146,195,165],backgroundColor:BL},
+      {label:'Engaged Sessions',data:[62,79,75,89,80],backgroundColor:GR}
+    ]
+  }, options:{responsive:true,maintainAspectRatio:false}
+});
+new Chart(document.getElementById('channelsChart'), {
+  type:'doughnut', data:{
+    labels:['Direct','Organic','Social','Paid','Referral'],
+    datasets:[{data:[485,191,65,64,39],backgroundColor:[GY,BL,OR,RD,GR]}]
+  }, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right'}}}
+});
+</script>
+</body>
+</html>
