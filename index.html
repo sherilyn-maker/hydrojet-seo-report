@@ -582,298 +582,476 @@ new Chart(document.getElementById('channelsChart'), {
 });
 </script>
 
-<!-- DETAILED CONTENT AUDIT TAB -->
+
+<!-- COMPLETE DEEP AUDIT TAB -->
 <div id="tab-deepaudit" class="tab-pane">
-  <div class="section-title">Detailed Content Audit — Every Page</div>
-  <div class="section-sub">Meta tags, images, content flow, CTAs, and schema — specific fixes for each page</div>
+  <div class="section-title">Deep Content Audit — All 30 Pages</div>
+  <div class="section-sub">Meta tags, FAQPage schema, images, content flow, CTAs — every page live-audited</div>
 
   <div style="background:#E3F2FD;border:2px solid #1565C0;border-radius:10px;padding:16px 18px;margin-bottom:20px">
-    <h3 style="color:#0D47A1;font-size:14px;margin-bottom:8px">Audit Methodology</h3>
-    <p style="font-size:13px;line-height:1.6">Every page was live-audited by reading its actual title, meta description, H1, H2 structure, images, schema markup, CTA placement, and word count. Recommendations below are based on real findings, not generic templates. GSC position and impression data is cross-referenced for each page to prioritize fixes by business impact.</p>
+    <h3 style="color:#0D47A1;font-size:14px;margin-bottom:8px">How This Audit Was Done</h3>
+    <p style="font-size:13px;line-height:1.6">Every page was live-fetched and analyzed for: actual title tag, meta description, H1, H2 structure, FAQPage schema presence, image count and alt text, word count, phone CTA, contact form, and content gaps. GSC impression and position data is cross-referenced for each page. This is based on the real current state of the site — not assumptions.</p>
   </div>
 
-  <!-- PAGE 1: HOMEPAGE -->
-  <div class="card" style="border-left:5px solid #C62828">
-    <div class="card-title" style="font-size:15px">🏠 Homepage — / <span class="badge badge-red">CRITICAL: 81K impressions, pos 11.2</span></div>
+  <!-- CRITICAL TYPOS CALLOUT -->
+  <div style="background:#FFEBEE;border:2px solid #C62828;border-radius:10px;padding:16px 18px;margin-bottom:20px">
+    <h3 style="color:#B71C1C;font-size:14px;margin-bottom:8px">🚨 Fix These Typos This Week — They Are Costing Rankings</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead><tr style="background:#B71C1C;color:white"><th style="padding:8px">Page</th><th>Typo Found</th><th>Correct Version</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr style="background:#FFF3F3"><td>/areas-served/point-pleasant-beach/</td><td style="color:#B71C1C;font-weight:700">"Poisant Beach"</td><td style="color:#2E7D32;font-weight:700">"Point Pleasant Beach"</td><td>Title tag AND meta description</td></tr>
+        <tr><td>/services/pipe-bursting/</td><td style="color:#B71C1C;font-weight:700">"Tom's River" (apostrophe)</td><td style="color:#2E7D32;font-weight:700">"Toms River" (no apostrophe)</td><td>Title tag AND meta description</td></tr>
+        <tr style="background:#FFF3F3"><td>/services/drain-snaking/</td><td style="color:#B71C1C;font-weight:700">"Tom's River" (apostrophe)</td><td style="color:#2E7D32;font-weight:700">"Toms River" (no apostrophe)</td><td>Title tag AND meta description</td></tr>
+        <tr><td>/areas-served/barnegat-township/</td><td style="color:#B71C1C;font-weight:700">H1 truncated: "No-Nons" (mid-word)</td><td style="color:#2E7D32;font-weight:700">Should end with complete word</td><td>H1 heading</td></tr>
+        <tr style="background:#FFF3F3"><td>/areas-served/</td><td style="color:#B71C1C;font-weight:700">H1 ends "Countie" (truncated)</td><td style="color:#2E7D32;font-weight:700">Should be "Counties"</td><td>H1 heading</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="two-col" style="margin-bottom:16px">
-      <div>
-        <p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">CURRENT TITLE TAG</p>
-        <div style="background:#FFF3E0;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Reliable Sewer &amp; Drain Services in Toms River, NJ | Get $50 off on Snake Jobs</div>
-      </div>
-      <div>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">RECOMMENDED TITLE TAG</p>
-        <div style="background:#E8F5E9;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Hydro Jetting &amp; Drain Cleaning in Toms River NJ | HydroJet Drain Service</div>
-      </div>
+  <!-- FAQ SCHEMA GAPS -->
+  <div style="background:#FFF3E0;border:2px solid #F57C00;border-radius:10px;padding:16px 18px;margin-bottom:20px">
+    <h3 style="color:#E65100;font-size:14px;margin-bottom:8px">⚠️ Pages Missing FAQPage Schema (8 Pages)</h3>
+    <p style="font-size:13px;margin-bottom:10px">These pages have FAQ content in their HTML but no JSON-LD FAQPage schema. Adding schema makes them eligible for AI Overviews and People Also Ask boxes. Aberdeen (pos 9.5) and Beachwood (pos 11.9) are the most urgent — they are near page 1 with zero clicks.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span class="badge badge-red">/ (homepage)</span>
+      <span class="badge badge-red">/services/drain-cleaning/</span>
+      <span class="badge badge-red">/areas-served/aberdeen-township/ (pos 9.5!)</span>
+      <span class="badge badge-red">/areas-served/beachwood/ (pos 11.9!)</span>
+      <span class="badge badge-red">/areas-served/point-pleasant-beach/</span>
+      <span class="badge badge-orange">/areas-served/island-heights/</span>
+      <span class="badge badge-orange">/areas-served/colts-neck/</span>
+      <span class="badge badge-orange">/areas-served/barnegat-township/</span>
     </div>
+  </div>
 
-    <div class="two-col" style="margin-bottom:16px">
-      <div>
-        <p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">CURRENT META DESCRIPTION</p>
-        <div style="background:#FFF3E0;padding:10px;border-radius:6px;font-size:13px">Partner with Hydro Jet Drain Service for reliable sewer &amp; drain services in Toms River, NJ. We offer $50 off on snake jobs. Call now for lasting solutions!</div>
-      </div>
-      <div>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">RECOMMENDED META DESCRIPTION</p>
-        <div style="background:#E8F5E9;padding:10px;border-radius:6px;font-size:13px">Same-day hydro jetting and drain cleaning in Toms River, NJ. Serving Ocean County since [year]. Licensed, insured, and available 24/7 for emergencies. Free estimates. Call now.</div>
-      </div>
+  <!-- FILTERS -->
+  <div class="card" style="padding:14px 18px;margin-bottom:14px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="filterDA('ALL')" class="filter-btn active" data-da="ALL">All 30 Pages</button>
+      <button onclick="filterDA('CRITICAL')" class="filter-btn" data-da="CRITICAL" style="background:#FFEBEE;color:#B71C1C">🔴 Critical</button>
+      <button onclick="filterDA('HIGH')" class="filter-btn" data-da="HIGH" style="background:#FFF3E0;color:#BF360C">🟠 High</button>
+      <button onclick="filterDA('MEDIUM')" class="filter-btn" data-da="MEDIUM" style="background:#ECEFF1;color:#37474F">🟡 Medium</button>
+      <button onclick="filterDA('MONITOR')" class="filter-btn" data-da="MONITOR" style="background:#E3F2FD;color:#0D47A1">👁 Monitor</button>
+      <button onclick="filterDA('LOW')" class="filter-btn" data-da="LOW" style="background:#F1F8E9;color:#33691E">Low</button>
     </div>
-
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Recommended Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>H1</strong></td><td>"Providing the Most Powerful Solutions for Tough Drain and Pipe Problems"</td><td>No location keyword, no service keyword in H1</td><td>Change to: "Hydro Jetting and Drain Cleaning in Toms River, NJ — Powerful Solutions for Every Pipe Problem"</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td>Page has FAQ questions as H2 headings but NO JSON-LD FAQPage schema</td><td style="color:var(--red)">FAQ schema is missing — the FAQ content exists but Google can't read it as structured data</td><td>Add FAQPage JSON-LD schema in the head using the existing FAQ questions: "How quickly can Hydro Jet Drain Service respond to emergencies?" and "What makes trenchless pipe repair better..."</td></tr>
-        <tr><td><strong>Title Tag Issue</strong></td><td>"Get $50 off on Snake Jobs" in title</td><td>Promotional offer in title consumes character space that should go to keywords. CTR for non-promotional searches may be lower.</td><td>Move the $50 offer to the meta description. Use title space for primary keywords: "Hydro Jetting &amp; Drain Cleaning Toms River NJ"</td></tr>
-        <tr><td><strong>H2 Structure</strong></td><td>H2s are benefit statements, not keyword-rich questions</td><td>Missing question-format H2s that match how users search</td><td>Add: "How Much Does Hydro Jetting Cost in Ocean County NJ?", "What Drain Services Do We Offer in Toms River?" to support FAQ schema</td></tr>
-        <tr><td><strong>Images</strong></td><td>9 images, all have alt text (good). But are images of equipment/trucks or service results?</td><td>Stock photos of plumbing equipment rank less effectively than photos of actual jobs</td><td>Replace any stock images with real photos of hydro jetting jobs in Ocean County. Alt text should include: "hydro jetting service Toms River NJ" or "drain cleaning Ocean County"</td></tr>
-        <tr><td><strong>Primary CTA</strong></td><td>Phone CTA and form present</td><td>$50 offer appears in the title but may not be prominent on the page itself</td><td>Add a sticky header bar on mobile with click-to-call phone number. Add a prominent "$50 off your first snake job" banner near the top of the page to capitalize on the offer visibility</td></tr>
-        <tr><td><strong>Content Flow</strong></td><td>~1,142 words (shorter than service pages)</td><td>Homepage has fewer words than individual service pages — it should anchor the content hierarchy</td><td>Add: (1) Service menu section with brief description of each service linking to sub-pages, (2) Service area map or city list, (3) "Why choose HydroJet" section with specific differentiators, (4) 3 recent customer reviews embedded</td></tr>
-        <tr><td><strong>Schema</strong></td><td>Plumber + LocalBusiness schema present</td><td>Good foundation. Missing: AggregateRating, OpeningHoursSpecification</td><td>Add AggregateRating with real review count and average. Add OpeningHours (especially if 24/7 available). This enables star ratings to appear in SERPs.</td></tr>
-        <tr><td><strong>Internal Links</strong></td><td>Unknown from audit</td><td>Homepage should link to every service page and key city pages</td><td>Add a "Our Services" grid section with icons linking to: Hydro Jetting, Drain Cleaning, Water Line, Trenchless, Pipe Bursting, Drain Snaking. Add "Areas We Serve" section with clickable city list.</td></tr>
-      </tbody>
-    </table></div>
   </div>
 
-  <!-- PAGE 2: HYDRO JETTING -->
-  <div class="card" style="border-left:5px solid #E65100">
-    <div class="card-title" style="font-size:15px">💧 Hydro Jetting Service Page — /services/hydro-jetting/ <span class="badge badge-orange">HIGH: pos 44.3, page 5</span></div>
-    <div class="two-col" style="margin-bottom:16px">
-      <div>
-        <p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">CURRENT TITLE</p>
-        <div style="background:#FFF3E0;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Experience Premium Hydro Jetting Services in Toms River, NJ | 10% Off for First...</div>
-      </div>
-      <div>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">RECOMMENDED TITLE</p>
-        <div style="background:#E8F5E9;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Hydro Jetting Service in Toms River NJ | Same-Day | HydroJet Drain Service</div>
-      </div>
+  <div class="card">
+    <div class="card-title">📋 All 30 Pages — Complete Audit Table</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Columns: Priority · Page + Word Count · Impressions · GSC Position · FAQPage Schema · Current Title (orange) · Recommended Title (green) · Current H1 · Issues Found</p>
+    <div class="tbl-wrap">
+      <table id="da-table">
+        <thead><tr>
+          <th style="width:80px">Priority</th>
+          <th style="width:180px">Page</th>
+          <th style="text-align:right;width:80px">Impr</th>
+          <th style="text-align:right;width:60px">Pos</th>
+          <th style="width:80px">FAQ Schema</th>
+          <th style="width:220px">Current Title</th>
+          <th style="width:220px">Recommended Title</th>
+          <th style="width:160px">Current H1</th>
+          <th>Issues Found</th>
+        </tr></thead>
+        <tbody id="da-tbody">
+<tr>
+      <td><span class="badge badge-red">CRITICAL</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/</strong><br><small style="color:var(--muted)">1,142 words</small></td>
+      <td style="text-align:right;font-size:12px">81,053</td>
+      <td class="rank-good" style="text-align:right">11.2</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Reliable Sewer & Drain Services in Toms River, NJ | Get $50 off on Sna</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Hydro Jetting &amp; Drain Cleaning in Toms River NJ | HydroJet Drain Service</strong></td>
+      <td style="font-size:11px">Providing the Most Powerful Solutions for Tough Drain and Pi</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">No FAQPage schema despite FAQ H2s</li><li style="color:inherit;margin-bottom:2px">Title: offer in title wastes keyword space</li><li style="color:inherit;margin-bottom:2px">H1: no location/service keyword</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/hydro-jetting/</strong><br><small style="color:var(--muted)">2,494 words</small></td>
+      <td style="text-align:right;font-size:12px">1,514</td>
+      <td class="rank-bad" style="text-align:right">44.3</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Experience Premium Hydro Jetting Services in Toms River, NJ | 10% Off </strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Hydro Jetting Service in Toms River NJ | Same-Day | HydroJet Drain Service</strong></td>
+      <td style="font-size:11px">Effective, High-Pressure Cleaning for Sewer and Drain Pipes</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title starts with "Experience Premium" — not a search query</li><li style="color:inherit;margin-bottom:2px">H1: no location, no "hydro jetting" keyword</li><li style="color:inherit;margin-bottom:2px">No cost section</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/drain-cleaning/</strong><br><small style="color:var(--muted)">2,629 words</small></td>
+      <td style="text-align:right;font-size:12px">2,862</td>
+      <td class="rank-bad" style="text-align:right">36.3</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain Cleaning in Central Jersey Shore Counties | 24/7 Emergency Servi</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain Cleaning Service in Toms River NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Keep Your Drains Flowing Freely with Expert Drain Cleaning S</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">No FAQPage schema on 2,629-word page</li><li style="color:inherit;margin-bottom:2px">Title: "Central Jersey Shore Counties" — no one searches this phrase</li><li style="color:inherit;margin-bottom:2px">H1: no location</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/water-line/</strong><br><small style="color:var(--muted)">2,515 words</small></td>
+      <td style="text-align:right;font-size:12px">3,299</td>
+      <td class="rank-warn" style="text-align:right">21.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Exceptional Water Line Services in Toms River, NJ | Reliable Unlike An</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Water Line Repair &amp; Replacement in Toms River NJ | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Same-Day Water Line Services in Ocean County For Your Comfor</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title truncated and "Reliable Unlike Anywhere Else" wastes chars</li><li style="color:inherit;margin-bottom:2px">No NJ permit context</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/trenchless-pipe-lining/</strong><br><small style="color:var(--muted)">2,500 words</small></td>
+      <td style="text-align:right;font-size:12px">1,467</td>
+      <td class="rank-warn" style="text-align:right">19.4</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Hire Experts for Trenchless Pipe Lining Services in Toms River, NJ | A</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Trenchless Pipe Lining in Toms River NJ | No-Dig Repair | HydroJet</strong></td>
+      <td style="font-size:11px">A Modern, Efficient Way to Repair Your Pipes Without the Mes</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title: "Hire Experts" is not how users search</li><li style="color:inherit;margin-bottom:2px">H1: no keyword, no location</li><li style="color:inherit;margin-bottom:2px">No cost per foot section</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-red">CRITICAL</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/pipe-bursting/</strong><br><small style="color:var(--muted)">2,527 words</small></td>
+      <td style="text-align:right;font-size:12px">1,373</td>
+      <td class="rank-bad" style="text-align:right">37.8</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Trusted by Locals for Pipe Bursting Services in Tom's River | 10% Off </strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Pipe Bursting Service in Toms River NJ | No-Dig Sewer Replacement</strong></td>
+      <td style="font-size:11px">The Efficient Solution for Pipe Replacement</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">TYPO: Tom's River (apostrophe) in title AND meta</li><li style="color:inherit;margin-bottom:2px">H1: no location, no 'pipe bursting' keyword</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-red">CRITICAL</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/drain-snaking/</strong><br><small style="color:var(--muted)">2,570 words</small></td>
+      <td style="text-align:right;font-size:12px">334</td>
+      <td class="rank-bad" style="text-align:right">29.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Same-Day Service for Snaking Services in Tom's River, NJ | Enjoy $50 O</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain Snaking Service in Toms River NJ | $50 Off | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Get Your Drains Flowing Again with Snaking Services in Ocean</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">TYPO: Tom's River in title AND meta</li><li style="color:inherit;margin-bottom:2px">H2 'Common Causes of clogs include:' is incomplete heading</li><li style="color:var(--red);margin-bottom:2px">Title truncated mid-word</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-red">CRITICAL</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/contact-us/</strong><br><small style="color:var(--muted)">2,132 words</small></td>
+      <td style="text-align:right;font-size:12px">5,985</td>
+      <td class="rank-bad" style="text-align:right">58.9</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Call Our Team of Experts | First Responders Get 10% Off</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Contact HydroJet Drain Service | Toms River NJ | 24/7 Drain &amp; Sewer</strong></td>
+      <td style="font-size:11px">Contact Us</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">ROOT CAUSE of pos 59: title has ZERO location or service keyword</li><li style="color:inherit;margin-bottom:2px">H1 is just "Contact Us" — no topic relevance</li><li style="color:inherit;margin-bottom:2px">2,132 words for a contact page is excessive</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/about-us/</strong><br><small style="color:var(--muted)">2,603 words</small></td>
+      <td style="text-align:right;font-size:12px">2,207</td>
+      <td class="rank-bad" style="text-align:right">39.4</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>About Our Top Sewer & Drain Service Company | We Get The Job Done</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>About HydroJet Drain Service | Licensed NJ Drain Specialists | Toms River</strong></td>
+      <td style="font-size:11px">The Hydro Jet Drain Service Team at Your Service</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">No NJ contractor license number visible</li><li style="color:var(--orange);margin-bottom:2px">Missing team/owner photos (EEAT)</li><li style="color:inherit;margin-bottom:2px">Meta: "we get the job done" is generic</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/toms-river/</strong><br><small style="color:var(--muted)">2,538 words</small></td>
+      <td style="text-align:right;font-size:12px">6,970</td>
+      <td class="rank-warn" style="text-align:right">23.0</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Same-Day Sewer & Drain Services in Toms River, NJ | 10% Off for First </strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Toms River, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Leading Drain & Sewer Expert in Toms River, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title truncated</li><li style="color:inherit;margin-bottom:2px">H1: "Leading" is unverifiable superlative</li><li style="color:inherit;margin-bottom:2px">Needs Toms River neighborhood names for local uniqueness</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/aberdeen-township/</strong><br><small style="color:var(--muted)">2,614 words</small></td>
+      <td style="text-align:right;font-size:12px">840</td>
+      <td class="rank-good" style="text-align:right">9.5</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Trusted Drain and Sewer Expert in Aberdeen Township, NJ | Discounts Av</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Aberdeen Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Drain and Sewer Expert in Aberdeen Township, NJ That Can</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema — ranked pos 9.5 with 0 clicks!</li><li style="color:inherit;margin-bottom:2px">Title: "Discounts Available" vague</li><li style="color:inherit;margin-bottom:2px">H1 truncated</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/beachwood/</strong><br><small style="color:var(--muted)">2,658 words</small></td>
+      <td style="text-align:right;font-size:12px">732</td>
+      <td class="rank-good" style="text-align:right">11.9</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Beachwood, NJ | Customer-First Approach</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Beachwood, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Trusted Local Drain & Sewer Expert in Beachwood, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema — pos 11.9 with 0 clicks!</li><li style="color:inherit;margin-bottom:2px">Title: "Customer-First Approach" wastes keyword space</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-red">CRITICAL</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/point-pleasant-beach/</strong><br><small style="color:var(--muted)">2,283 words</small></td>
+      <td style="text-align:right;font-size:12px">3,145</td>
+      <td class="rank-warn" style="text-align:right">18.3</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Sewer & Drain Services in Poisant Beach, NJ | We Get The Job Right Don</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Point Pleasant Beach, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Point Pleasant Beach Sewer & Drain Specialists</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">CRITICAL TYPO: "Poisant Beach" in title AND meta (should be Point Pleasant Beach)</li><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema</li><li style="color:var(--red);margin-bottom:2px">Title truncated mid-word</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/little-egg-harbor-township/</strong><br><small style="color:var(--muted)">2,559 words</small></td>
+      <td style="text-align:right;font-size:12px">1,916</td>
+      <td class="rank-warn" style="text-align:right">19.8</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Little Egg Harbor Township, NJ | Free Estima</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Little Egg Harbor Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Drain & Sewer Expert in Little Egg Harbor Township, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title starts with "Drain and Sewer Expert" — not service+city format</li><li style="color:inherit;margin-bottom:2px">H1 good structure. "Free Estimates" in title is a good CTA signal.</li><li style="color:inherit;margin-bottom:2px">Ensure FAQ questions are township-specific</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/berkeley-township/</strong><br><small style="color:var(--muted)">2,689 words</small></td>
+      <td style="text-align:right;font-size:12px">1,772</td>
+      <td class="rank-bad" style="text-align:right">37.1</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Berkeley Township, NJ | 24/7 Emergency Servi</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Berkeley Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Leading Drain & Sewer Expert in Berkeley Township, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">H1: "Leading" is unverifiable superlative</li><li style="color:var(--orange);margin-bottom:2px">Title good but H1 weak</li><li style="color:inherit;margin-bottom:2px">24/7 claim in title — ensure this is accurate and page supports it</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/island-heights/</strong><br><small style="color:var(--muted)">2,277 words</small></td>
+      <td style="text-align:right;font-size:12px">1,756</td>
+      <td class="rank-warn" style="text-align:right">18.5</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Count On Us for Sewer & Drain Services in Island Heights, NJ | $50 Off</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Island Heights, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Serving Property Owners With Excellent Service Coupled With </td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema</li><li style="color:var(--orange);margin-bottom:2px">H1 has ZERO location or service keyword — extremely weak</li><li style="color:inherit;margin-bottom:2px">Title: "Count On Us" is not a search query</li><li style="color:inherit;margin-bottom:2px">Offer in H1 wastes the most important heading</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/colts-neck/</strong><br><small style="color:var(--muted)">2,275 words</small></td>
+      <td style="text-align:right;font-size:12px">1,722</td>
+      <td class="rank-warn" style="text-align:right">18.2</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Expert Sewer & Drain Services in Colts Neck, NJ | Full Range of Pipe a</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Colts Neck, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Your Go-To Local Team for Pipe & Water Line Solutions</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema</li><li style="color:var(--orange);margin-bottom:2px">H1 has NO location keyword — "Your Go-To Local Team" could be any company anywhere</li><li style="color:inherit;margin-bottom:2px">Title is over 65 chars and gets truncated</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/lakehurst/</strong><br><small style="color:var(--muted)">2,703 words</small></td>
+      <td style="text-align:right;font-size:12px">1,662</td>
+      <td class="rank-warn" style="text-align:right">19.8</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Lakehurst, NJ | Same-Day Service Availabilit</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Lakehurst, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Go-To Drain and Sewer Expert in Lakehurst, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--orange);margin-bottom:2px">H1 "The Go-To" is weak phrasing</li><li style="color:inherit;margin-bottom:2px">Title good structure. Add H1 improvement.</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/</strong><br><small style="color:var(--muted)">2,719 words</small></td>
+      <td style="text-align:right;font-size:12px">1,693</td>
+      <td class="rank-bad" style="text-align:right">34.8</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Trusted Experts in Sewer & Drain Services in Toms River, NJ | 10% Off </strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Service Areas | Ocean County NJ Drain &amp; Sewer | HydroJet Drain Service</strong></td>
+      <td style="font-size:11px">Your Trusted Choice for Sewer and Drain Services in Central </td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">H1 truncated — "Countie" is cut off, looks broken</li><li style="color:inherit;margin-bottom:2px">Hub page title references Toms River but page covers all areas</li><li style="color:inherit;margin-bottom:2px">No comprehensive city link grid visible from audit</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/services/</strong><br><small style="color:var(--muted)">2,831 words</small></td>
+      <td style="text-align:right;font-size:12px">1,468</td>
+      <td class="rank-bad" style="text-align:right">41.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Proven Expert in Sewer & Drain Services in Toms River, NJ | Senior Cit</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Services in Toms River NJ | Hydro Jetting, Cleaning &amp; More</strong></td>
+      <td style="font-size:11px">Dealing With Drain Trouble?</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">H1 "Dealing With Drain Trouble?" — rhetorical question with no location or service keyword</li><li style="color:var(--orange);margin-bottom:2px">NO FORM on the services hub page!</li><li style="color:inherit;margin-bottom:2px">Title: "Proven Expert" is unverifiable superlative</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">MEDIUM</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/roselle/</strong><br><small style="color:var(--muted)">2,631 words</small></td>
+      <td style="text-align:right;font-size:12px">1,380</td>
+      <td class="rank-warn" style="text-align:right">18.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Roselle, NJ | Quick Response, Same-Day Servi</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Roselle, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Your Local Sewer and Drain Expert in Roselle, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Roselle, NJ is in Union County — far from Ocean County service area. Verify this is intentional service area expansion.</li><li style="color:inherit;margin-bottom:2px">If not serving Roselle regularly, consider noindex or 301 redirect to avoid thin/irrelevant geo pages</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-orange">HIGH</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/brick-township/</strong><br><small style="color:var(--muted)">2,624 words</small></td>
+      <td style="text-align:right;font-size:12px">1,335</td>
+      <td class="rank-warn" style="text-align:right">14.8</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Brick Township, NJ | Workmanship Guarantee</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Brick Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Premier Drain & Sewer Experts in Brick Township, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">H1: "Premier" is unverifiable superlative</li><li style="color:inherit;margin-bottom:2px">Near page 1 (pos 14.8) — optimize title for better CTR</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/ocean-township/</strong><br><small style="color:var(--muted)">2,551 words</small></td>
+      <td style="text-align:right;font-size:12px">812</td>
+      <td class="rank-bad" style="text-align:right">26.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Ocean Township, NJ | Family-Owned Business</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Ocean Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Your Trusted Drain & Sewer Expert in Ocean Township, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Title: "Family-Owned Business" good trust signal but verify it is accurate and can be prominently displayed on page</li><li style="color:inherit;margin-bottom:2px">Good structure overall</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/beach-haven/</strong><br><small style="color:var(--muted)">2,547 words</small></td>
+      <td style="text-align:right;font-size:12px">399</td>
+      <td class="rank-warn" style="text-align:right">22.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Beach Haven, NJ | Over 10 Years of Experienc</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Beach Haven, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Preferred Drain & Sewer Experts in Beach Haven, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Verify "Over 10 Years of Experience" claim in title is accurate — unverifiable claims are EEAT risks</li><li style="color:inherit;margin-bottom:2px">Beach Haven is a barrier island town — add seasonal/shore property context</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/barnegat-township/</strong><br><small style="color:var(--muted)">2,521 words</small></td>
+      <td style="text-align:right;font-size:12px">168</td>
+      <td class="rank-warn" style="text-align:right">18.8</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Experienced Drain and Sewer Expert in Barnegat Township, NJ | Free Est</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Barnegat Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Go-To Drain and Sewer Expert in Barnegat Township, NJ for Hi</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO FAQPage schema despite having FAQ H2 headings</li><li style="color:inherit;margin-bottom:2px">H1 truncated — ends in "No-Nons" mid-word (likely "No-Nonsense")</li><li style="color:inherit;margin-bottom:2px">H1 too long — truncating looks broken in some browsers</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/lavallette/</strong><br><small style="color:var(--muted)">2,039 words</small></td>
+      <td style="text-align:right;font-size:12px">147</td>
+      <td class="rank-bad" style="text-align:right">45.2</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Lavallette, NJ | Local Specialists</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Lavallette, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Your Trusted Drain & Sewer Expert in Lavallette, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Lower word count (2,039) — thinner than other pages</li><li style="color:inherit;margin-bottom:2px">Lavallette is a small barrier island borough — seasonal population important to mention</li><li style="color:inherit;margin-bottom:2px">Shorter meta description</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/millstone/</strong><br><small style="color:var(--muted)">2,071 words</small></td>
+      <td style="text-align:right;font-size:12px">109</td>
+      <td class="rank-bad" style="text-align:right">41.3</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Millstone, NJ | Reliable Service</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Millstone, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">Professional Drain & Sewer Expert in Millstone, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Lower word count (2,071)</li><li style="color:inherit;margin-bottom:2px">Millstone is inland Monmouth County — different character from shore towns. Add rural/equestrian property context.</li><li style="color:inherit;margin-bottom:2px">Title: "Reliable Service" is generic</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/manalapan-township/</strong><br><small style="color:var(--muted)">2,082 words</small></td>
+      <td style="text-align:right;font-size:12px">102</td>
+      <td class="rank-bad" style="text-align:right">55.5</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Manalapan Township, NJ | 24/7 Service</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Manalapan Twp, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Drain & Sewer Expert in Manalapan Township, NJ, That You</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Position 55.5 — page 6! The page is too far from the core service area to rank well</li><li style="color:inherit;margin-bottom:2px">Lower word count (2,082)</li><li style="color:inherit;margin-bottom:2px">If not actively serving Manalapan regularly, consider whether to keep this page</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/areas-served/long-beach/</strong><br><small style="color:var(--muted)">2,178 words</small></td>
+      <td style="text-align:right;font-size:12px">61</td>
+      <td class="rank-bad" style="text-align:right">36.6</td>
+      <td style="font-size:12px"><span style="color:var(--green);font-weight:700">✓ Present</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Drain and Sewer Expert in Long Beach, NJ | Same-Day Service</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Service in Long Beach, NJ | Same-Day | HydroJet Drain</strong></td>
+      <td style="font-size:11px">The Preferred Drain & Sewer Experts in Long Beach, NJ</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:inherit;margin-bottom:2px">Long Beach Island (LBI) has seasonal shore property context — mention it</li><li style="color:inherit;margin-bottom:2px">Lower word count (2,178)</li><li style="color:inherit;margin-bottom:2px">Coastal/vacation property angle is valuable here</li></ul></td>
+    </tr>
+<tr>
+      <td><span class="badge badge-gray">LOW</span></td>
+      <td style="font-size:12px;word-break:break-all"><strong>/blog/</strong><br><small style="color:var(--muted)">1,892 words</small></td>
+      <td style="text-align:right;font-size:12px">0</td>
+      <td class="rank-good" style="text-align:right">9.0</td>
+      <td style="font-size:12px"><span style="color:var(--red);font-weight:700">✗ Missing</span></td>
+      <td style="font-size:11px;color:var(--primary);font-family:monospace;background:#E3F2FD;padding:4px 6px;border-radius:4px"><strong>Blog - Hydro Jet Drain Service</strong></td>
+      <td style="font-size:11px;color:var(--green);font-family:monospace;background:#E8F5E9;padding:4px 6px;border-radius:4px"><strong>Drain &amp; Sewer Tips Blog | Ocean County NJ | HydroJet Drain Service</strong></td>
+      <td style="font-size:11px">Blog</td>
+      <td><ul style="font-size:11.5px;padding-left:14px;margin:0"><li style="color:var(--red);margin-bottom:2px">NO meta description at all — Google will auto-generate which is poor CTR</li><li style="color:inherit;margin-bottom:2px">H1 is just "Blog" — no keywords, no location</li><li style="color:var(--orange);margin-bottom:2px">Title "Blog - Hydro Jet Drain Service" is very weak for SEO</li><li style="color:inherit;margin-bottom:2px">No FAQPage schema</li></ul></td>
+    </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+
+  <!-- IMAGE RECOMMENDATIONS (universal) -->
+  <div class="card">
+    <div class="card-title">🖼️ Image Recommendations — All Pages</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">All images currently have alt text (good). These are the content improvements needed.</p>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
+      <thead><tr><th>Page Type</th><th>Current Image Situation</th><th>What to Add</th><th>Alt Text Format</th></tr></thead>
       <tbody>
-        <tr><td><strong>Meta Description</strong></td><td>"Experience premium hydro jetting services in Toms River, NJ, from Hydro Jet Drain Service. We are the experts locals turn to for r..." (truncated)</td><td>Meta is truncated — likely over 160 chars. "Experience premium" is weak copy — doesn't give users a reason to click.</td><td>"Same-day hydro jetting in Toms River, NJ. High-pressure water jetting clears grease, roots, and scale that snaking can't touch. Licensed, insured. Free estimate. Call now."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Effective, High-Pressure Cleaning for Sewer and Drain Pipes"</td><td>No location, no "hydro jetting" keyword in H1. Generic benefit statement.</td><td>"Hydro Jetting Service in Ocean County, NJ — High-Pressure Drain Clearing That Works"</td></tr>
-        <tr><td><strong>Title Issue</strong></td><td>Starts with "Experience Premium..." — vague</td><td>"Experience premium" doesn't match how anyone searches. Users search "hydro jetting Toms River NJ" not "experience premium hydro jetting"</td><td>Lead with the service and location: "Hydro Jetting Toms River NJ"</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td>FAQPage schema IS present</td><td style="color:var(--green)">Good — keep and verify questions match current PAA boxes</td><td>Audit the FAQ questions annually. Target: "How much does hydro jetting cost?", "Is hydro jetting safe for old pipes?", "How often should I hydro jet my drains?"</td></tr>
-        <tr><td><strong>Images</strong></td><td>7 images, all with alt text</td><td>Verify alt text includes keywords. Example: if an image shows a technician working, alt should be "hydro jetting technician clearing sewer line Toms River NJ"</td><td>Add one before/after image showing a drain before and after hydro jetting. Add alt: "drain before and after hydro jetting Ocean County NJ"</td></tr>
-        <tr><td><strong>Content</strong></td><td>2,494 words — good depth</td><td>Content is substantial. The ranking issue is primarily the title tag not matching search queries, not content depth.</td><td>Add a cost section: "How Much Does Hydro Jetting Cost in Ocean County?" with range $300-$600 residential. This targets commercial-intent queries.</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>Likely a standard CTA at bottom. Users reading about hydro jetting need CTAs mid-page.</td><td>Add a mid-page CTA after the "problems hydro jetting solves" section: "Still not sure if you need hydro jetting? Call us — we'll diagnose the issue for free."</td></tr>
+        <tr><td><strong>Homepage</strong></td><td>9 images — likely stock photos</td><td>Replace at least 1 stock image with a real job photo from Ocean County</td><td>"hydro jetting job completed in Toms River NJ" or "drain cleaning Ocean County residential"</td></tr>
+        <tr><td><strong>Service pages</strong> (6 pages)</td><td>7-8 images each — all have alt text</td><td>Add one before/after image per service page showing a real result</td><td>"[service] before and after Ocean County NJ" e.g. "hydro jetting before after Toms River"</td></tr>
+        <tr><td><strong>About Us</strong></td><td>6 images</td><td>Add real team/owner photos — stock photos hurt EEAT on About pages</td><td>"HydroJet Drain Service owner [name] licensed NJ drain specialist"</td></tr>
+        <tr><td><strong>Area pages</strong> (20 pages)</td><td>4 images each — same images across pages</td><td>Add at least 1 locally relevant image per page (can be a map, neighborhood photo, or job photo from that area)</td><td>"drain service in [City Name] NJ by HydroJet Drain Service"</td></tr>
+        <tr><td><strong>Contact page</strong></td><td>4 images</td><td>Add 1 professional team photo. Remove decorative images that add no value.</td><td>"HydroJet Drain Service team Toms River NJ"</td></tr>
+        <tr><td><strong>Blog</strong></td><td>3 images</td><td>Add a featured image to the blog index. Each blog post should have a featured image that appears in the listing.</td><td>"[blog topic] tips Ocean County NJ"</td></tr>
       </tbody>
     </table></div>
   </div>
 
-  <!-- PAGE 3: DRAIN CLEANING -->
-  <div class="card" style="border-left:5px solid #E65100">
-    <div class="card-title" style="font-size:15px">🚿 Drain Cleaning — /services/drain-cleaning/ <span class="badge badge-orange">HIGH: pos 36.3, 2,862 impr</span></div>
-    <div class="two-col" style="margin-bottom:16px">
-      <div>
-        <p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">CURRENT TITLE</p>
-        <div style="background:#FFF3E0;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Drain Cleaning in Central Jersey Shore Counties | 24/7 Emergency Services</div>
-      </div>
-      <div>
-        <p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:4px">RECOMMENDED TITLE</p>
-        <div style="background:#E8F5E9;padding:10px;border-radius:6px;font-size:13px;font-family:monospace">Drain Cleaning Service in Toms River NJ | Same-Day | HydroJet Drain Service</div>
-      </div>
-    </div>
+  <!-- CONTENT FLOW (universal) -->
+  <div class="card">
+    <div class="card-title">📐 Content Flow Template — Apply to All Pages</div>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
+      <thead><tr><th>Section</th><th>Service Pages</th><th>Area Pages</th><th>Why It Matters</th></tr></thead>
       <tbody>
-        <tr><td><strong>Meta Description</strong></td><td>"Get fast and reliable drain cleaning service in Central Jersey Shore Counties from Hydro Jet Drain Service. Call now for efficient..." (truncated)</td><td>Truncated and vague. "Efficient" doesn't tell users what makes this company worth calling.</td><td>"Fast drain cleaning in Toms River, NJ. We fix kitchen drains, bathroom clogs, and main sewer lines — same day. Hydro jetting available for tough clogs. Free estimate."</td></tr>
-        <tr><td><strong>Title Issue</strong></td><td>"Central Jersey Shore Counties" is vague — searchers use specific city names</td><td>No one searches "drain cleaning central jersey shore counties" — they search "drain cleaning Toms River NJ" or "drain cleaning Ocean County"</td><td>Use primary city: "Drain Cleaning Service in Toms River NJ"</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td style="color:var(--red)">MISSING — no FAQPage schema on this page</td><td>2,629 words of content with no FAQ schema = missed AI Overview and PAA opportunity</td><td>Add FAQPage schema. Questions: "How much does drain cleaning cost in NJ?", "What causes drain clogs?", "When should I call a professional vs try DIY?", "How often should drains be cleaned?"</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Keep Your Drains Flowing Freely with Expert Drain Cleaning Service"</td><td>No location, benefit-only statement</td><td>"Drain Cleaning Service in Ocean County, NJ — Fast Relief for Kitchen, Bathroom, and Sewer Drains"</td></tr>
-        <tr><td><strong>Images</strong></td><td>8 images, all with alt text</td><td>Verify alt text includes "drain cleaning Toms River NJ" or specific drain types</td><td>Add one image showing a clogged drain before cleaning and after. Caption and alt text: "professional drain cleaning service Ocean County NJ"</td></tr>
-        <tr><td><strong>Content Flow</strong></td><td>H2s: service description, causes of clogs, prevention tips</td><td>Missing a cost section — "drain cleaning near me" price queries are common in GSC</td><td>Add H2: "How Much Does Drain Cleaning Cost in Toms River, NJ?" with residential range ($100-$300) vs commercial vs emergency rates.</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>Emergency messaging ("24/7") is in the title but may not be prominent on page</td><td>Add callout box: "Drain backed up right now? We offer same-day emergency drain cleaning in Ocean County. Call [phone] — we answer 24/7."</td></tr>
+        <tr><td>1. Hero</td><td>H1 with service + city + value prop. Phone number immediately visible.</td><td>H1 with service + city. Brief intro sentence.</td><td>First impression. Sets topic for Google.</td></tr>
+        <tr><td>2. Problem statement</td><td>"Is your drain slow/blocked? Here's why..." — validate the user's pain</td><td>"Homes in [City] often face..." — local context</td><td>Users confirm they're in the right place</td></tr>
+        <tr><td>3. Service description</td><td>What the service is, how it works, what the process looks like</td><td>List all services offered in this city with brief descriptions and links</td><td>Topical depth for ranking</td></tr>
+        <tr><td>4. Why choose us</td><td>Licensed NJ contractor, same-day service, warranty/guarantee</td><td>Local presence, response time, local knowledge</td><td>Conversion element</td></tr>
+        <tr><td>5. Cost section</td><td>Price range ($X-$X typical for Ocean County). Free estimate CTA.</td><td>Mention that free estimates are available</td><td>Captures commercial intent searches "$X drain cleaning NJ"</td></tr>
+        <tr><td>6. Mid-page CTA</td><td>"Ready to schedule? Call [phone] or fill out the form below."</td><td>"Need drain service in [City]? Call [phone] for same-day service."</td><td>Users who scrolled this far are interested</td></tr>
+        <tr><td>7. FAQ section</td><td>5-6 questions. MUST have FAQPage JSON-LD schema.</td><td>3-4 questions specific to the city</td><td>PAA appearances, AI Overviews, on-page helpfulness</td></tr>
+        <tr><td>8. Final CTA</td><td>"Get $[X] off / Schedule today / Free estimate"</td><td>"Serving [City] and surrounding NJ communities — call now"</td><td>Last conversion opportunity</td></tr>
       </tbody>
     </table></div>
   </div>
 
-  <!-- PAGE 4: WATER LINE -->
-  <div class="card" style="border-left:5px solid #1565C0">
-    <div class="card-title" style="font-size:15px">🔧 Water Line — /services/water-line/ <span class="badge badge-blue">MONITOR: pos 21.5, near page 2</span></div>
+  <!-- CTA RECOMMENDATIONS -->
+  <div class="card">
+    <div class="card-title">📣 CTA Recommendations — All Pages</div>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
+      <thead><tr><th>CTA Type</th><th>Currently Present?</th><th>Recommendation</th><th>Priority</th></tr></thead>
       <tbody>
-        <tr><td><strong>Title</strong></td><td>"Exceptional Water Line Services in Toms River, NJ | Reliable Unlike Anywhere Els..." (truncated - too long)</td><td>Title is over 60 characters and getting cut off. "Reliable Unlike Anywhere Else" wastes keyword space.</td><td>"Water Line Repair &amp; Replacement in Toms River NJ | HydroJet Drain Service" (59 chars)</td></tr>
-        <tr><td><strong>Meta Description</strong></td><td>Truncated. Contains "premium equipment and expertise to p..."</td><td>Cut off before the value proposition</td><td>"Water line repair and installation in Ocean County, NJ. Trenchless options available — no major digging. Same-day service. NJ licensed. Free estimates. Call now."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Same-Day Water Line Services in Ocean County For Your Comfort"</td><td>Good — has location and service. "For Your Comfort" is slightly weak as a closing phrase.</td><td>Minor improvement: "Same-Day Water Line Repair and Installation in Ocean County, NJ"</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Keep and verify questions are current</td><td>Ensure FAQ questions target: "How much does water line repair cost?", "Do I need a permit for water line replacement in NJ?", "What is trenchless water line replacement?"</td></tr>
-        <tr><td><strong>Images</strong></td><td>7 images, all with alt text</td><td>Verify alt texts include water line service terms</td><td>Add image of trenchless water line work in progress. Alt: "trenchless water line replacement Ocean County NJ"</td></tr>
-        <tr><td><strong>Content</strong></td><td>2,515 words — good</td><td>Add NJ permit context</td><td>Add section: "Do I Need a Permit for Water Line Repair in Ocean County, NJ?" — local regulatory context builds authority and captures permit-related searches.</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>Water line emergencies are high-urgency. Is emergency framing visible?</td><td>Add: "Water line burst? Don't wait — call for emergency water line service in Ocean County: [phone]" in a red callout box near the top of the page.</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 5: TRENCHLESS PIPE LINING -->
-  <div class="card" style="border-left:5px solid #1565C0">
-    <div class="card-title" style="font-size:15px">🔩 Trenchless Pipe Lining — /services/trenchless-pipe-lining/ <span class="badge badge-blue">MONITOR: pos 19.4, near page 2</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title</strong></td><td>"Hire Experts for Trenchless Pipe Lining Services in Toms River, NJ | Always Reli..." (truncated)</td><td>Title starts with "Hire Experts" — this is agency perspective, not user intent. Users search what they want, not who to hire.</td><td>"Trenchless Pipe Lining in Toms River NJ | No-Dig Pipe Repair | HydroJet"</td></tr>
-        <tr><td><strong>Meta Description</strong></td><td>Truncated. "Count on us to alway..." cut off</td><td>Truncated and generic</td><td>"Trenchless pipe lining (CIPP) in Ocean County, NJ. Repair damaged sewer pipes without excavation. Faster, cheaper, and less disruptive than traditional digging. Free estimate."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"A Modern, Efficient Way to Repair Your Pipes Without the Mess"</td><td>No keyword, no location. Reads like a tagline, not a headline.</td><td>"Trenchless Pipe Lining in Ocean County, NJ — No Digging, No Mess, Lasting Repairs"</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Verify questions are specific: cost per foot, eligible pipe types, warranty</td><td>Check that FAQ covers: "How much does trenchless pipe lining cost per foot?", "What types of pipes can be lined?", "How long does the repair last?"</td></tr>
-        <tr><td><strong>Images</strong></td><td>7 images, all with alt text</td><td>Trenchless work is visual — before/after is highly persuasive for this service</td><td>Add before/after showing collapsed pipe vs. after CIPP lining. Alt: "CIPP pipe lining repair Ocean County NJ before and after"</td></tr>
-        <tr><td><strong>Content Flow</strong></td><td>2,500 words with process description</td><td>Add cost section</td><td>Add: "How Much Does Trenchless Pipe Lining Cost in NJ?" with per-foot ranges ($80-$250/ft) and total job examples. This is the most-searched commercial intent query for this service.</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>Position 19 means users are evaluating options. Add a trust-building CTA.</td><td>Add mid-page: "Not sure if trenchless lining is right for your pipe? We do a free camera inspection to find out. Call [phone] to schedule today."</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 6: PIPE BURSTING -->
-  <div class="card" style="border-left:5px solid #E65100">
-    <div class="card-title" style="font-size:15px">💥 Pipe Bursting — /services/pipe-bursting/ <span class="badge badge-orange">HIGH: pos 37.8</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title — TYPO</strong></td><td>"Trusted by Locals for Pipe Bursting Services in <strong>Tom's River</strong>..." (with apostrophe)</td><td style="color:var(--red)">TYPO: "Tom's River" should be "Toms River" (no apostrophe). This affects local keyword matching and looks unprofessional.</td><td>"Pipe Bursting Service in Toms River NJ | No-Dig Sewer Replacement | HydroJet"</td></tr>
-        <tr><td><strong>Meta — TYPO</strong></td><td>"Looking for quality pipe bursting services in <strong>Tom's River</strong>? Hire Hydro Jet Drain Service."</td><td style="color:var(--red)">Same "Tom's River" typo in meta description. Fix immediately — this is a local SEO signal error.</td><td>"Pipe bursting sewer replacement in Toms River, NJ. Replace old pipes without major excavation. Same-day service available. Licensed NJ contractors. Free estimate."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"The Efficient Solution for Pipe Replacement"</td><td>No location, no "pipe bursting" keyword in H1</td><td>"Pipe Bursting Service in Ocean County, NJ — Complete Sewer Line Replacement Without the Dig"</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Keep and audit questions for relevance</td><td>Ensure FAQ covers: "What is pipe bursting?", "How much does pipe bursting cost?", "How is pipe bursting different from pipe lining?"</td></tr>
-        <tr><td><strong>Images</strong></td><td>7 images, all with alt text</td><td>Pipe bursting process is complex — diagrams or step photos help</td><td>Add a diagram or photo sequence showing the pipe bursting process. Alt: "pipe bursting process Toms River NJ sewer replacement"</td></tr>
-        <tr><td><strong>Content</strong></td><td>2,527 words</td><td>Add comparison to pipe lining</td><td>Add: "Pipe Bursting vs. Pipe Lining: Which Do You Need?" section. This captures comparison searches and helps users self-qualify.</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>This is a high-ticket service — pricing awareness CTA helps</td><td>Add: "Pipe bursting typically costs $4,000-$12,000 in Ocean County. Get a precise quote for your property — call [phone] for a free assessment."</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 7: DRAIN SNAKING -->
-  <div class="card" style="border-left:5px solid #1565C0">
-    <div class="card-title" style="font-size:15px">🐍 Drain Snaking — /services/drain-snaking/ <span class="badge badge-blue">MONITOR: pos 29.5</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title — TYPO + Truncated</strong></td><td>"Same-Day Service for Snaking Services in <strong>Tom's River</strong>, NJ | Enjoy $50 Off for Sna..." (truncated)</td><td style="color:var(--red)">Two issues: (1) "Tom's River" typo, (2) Title truncated — "$50 Off for Sna..." is cut off mid-word</td><td>"Drain Snaking Service in Toms River NJ | Same-Day | HydroJet Drain Service"</td></tr>
-        <tr><td><strong>Meta</strong></td><td>"Hydro Jet Drain Service offers same-day service for snaking services in Tom's River, NJ."</td><td style="color:var(--red)">"Tom's River" typo in meta too. Fix both title and meta together.</td><td>"Fast drain snaking in Toms River, NJ. Clears most common clogs in one visit. $50 off your first snake job. Same-day appointments available. Call [phone]."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Get Your Drains Flowing Again with Snaking Services in Ocean County"</td><td>Good — has location. Slightly weak opening verb "Get Your Drains Flowing"</td><td>Minor improvement: "Drain Snaking in Ocean County, NJ — Fast, Same-Day Clog Removal"</td></tr>
-        <tr><td><strong>H2 Issue</strong></td><td>"Common Causes of clogs include:" — looks like an incomplete H2</td><td style="color:var(--orange)">This H2 reads like a list opener, not a standalone heading. "Include:" at the end of a heading is grammatically odd.</td><td>Change to: "What Causes Drain Clogs in Ocean County Homes?" — proper question format that targets a common search query</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Good. Verify questions are specific to drain snaking.</td><td>Ensure FAQ has: "Is drain snaking the same as hydro jetting?", "How much does drain snaking cost?", "Will snaking damage my pipes?"</td></tr>
-        <tr><td><strong>Content</strong></td><td>2,570 words</td><td>The $50 offer (prominently in title) should be equally prominent on the page</td><td>Add a visible offer callout near the top: "Get $50 off your first drain snake job — mention this offer when you call."</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone and form present</td><td>The $50 offer is a conversion driver — make sure there's a direct CTA tied to it</td><td>"Ready to claim your $50 off? Call us or fill out the form — first-time customers get $50 off drain snaking in Ocean County."</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 8: CONTACT US -->
-  <div class="card" style="border-left:5px solid #C62828">
-    <div class="card-title" style="font-size:15px">📞 Contact Us — /contact-us/ <span class="badge badge-red">CRITICAL: pos 58.9 — page 6!</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title — ROOT CAUSE of pos 59</strong></td><td>"Call Our Team of Experts | First Responders Get 10% Off"</td><td style="color:var(--red)">This title has NO location keyword and NO service keyword. Google ranks pages for queries that match their title. This title matches no local service query. This is why the contact page ranks position 59.</td><td>"Contact HydroJet Drain Service | Toms River NJ | 24/7 Drain Emergencies"</td></tr>
-        <tr><td><strong>Meta Description</strong></td><td>"Hydro Jet Drain Service is a trusted sewer &amp; drain company in Toms River, NJ. First responders get 10% off. Contact our team..."</td><td>Meta is better than the title — has location and service. But it's still mostly a discount announcement.</td><td>"Call HydroJet Drain Service in Toms River, NJ for same-day drain and sewer service. Available 24/7 for emergencies. Online booking also available. First responders get 10% off."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Contact Us"</td><td style="color:var(--red)">Just "Contact Us" — Google sees this as a generic page with no topic relevance for any query</td><td>"Contact HydroJet Drain Service in Toms River, NJ — Schedule Same-Day Service"</td></tr>
-        <tr><td><strong>Content</strong></td><td>2,132 words (surprisingly high for a contact page)</td><td>This suggests the contact page has a lot of boilerplate or repeated content. Check for shared footer/navigation content inflating the word count.</td><td>Contact page should be simple: phone number (large, click-to-call), business hours, service area, and a short form. Too much content on a contact page can dilute its purpose.</td></tr>
-        <tr><td><strong>Form</strong></td><td>Form present</td><td>Is the form field count reasonable? Industry standard: 4 fields max (Name, Phone, Service, Message)</td><td>Ensure form is: Name, Phone Number, Service Needed (dropdown), Message. Remove email if phone is the primary contact method. Add: expected response time ("We respond within 1 hour during business hours").</td></tr>
-        <tr><td><strong>CTA</strong></td><td>Phone CTA present</td><td>Is the phone number the most visible element on the page?</td><td>Phone number should be in H2 format at the top of the page: large font, click-to-call, and should include "Available 24/7 for emergencies." The form should be secondary to the phone number.</td></tr>
-        <tr><td><strong>Schema</strong></td><td>Schema present</td><td>Contact page is an ideal place for ContactPage schema</td><td>Add ContactPage schema type to specify this is the contact page. Also ensure the phone number in the schema matches the page's click-to-call number exactly.</td></tr>
-        <tr><td><strong>Images</strong></td><td>4 images</td><td>What are the images on the contact page? Should be minimal and purposeful.</td><td>Add one professional photo of the team or a technician at work with alt: "HydroJet Drain Service team Toms River NJ". Builds trust for users on the conversion page.</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 9: ABOUT US -->
-  <div class="card" style="border-left:5px solid #1565C0">
-    <div class="card-title" style="font-size:15px">ℹ️ About Us — /about-us/ <span class="badge badge-blue">MEDIUM: pos 39.4</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title</strong></td><td>"About Our Top Sewer &amp; Drain Service Company | We Get The Job Done"</td><td>"We Get The Job Done" is a generic claim. Opportunity for location + trust signals.</td><td>"About HydroJet Drain Service | Licensed NJ Drain &amp; Sewer Specialists | Toms River"</td></tr>
-        <tr><td><strong>Meta</strong></td><td>"Learn more about the top sewer &amp; drain service company in NJ. At Hydro Jet Drain Service, we get the job done."</td><td>"Top sewer &amp; drain company in NJ" is an unverifiable claim. Meta should have trust signals.</td><td>"HydroJet Drain Service is Ocean County's licensed drain and sewer specialist. Serving Toms River and NJ shore communities since [year]. Licensed, insured, local. Meet the team."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"The Hydro Jet Drain Service Team at Your Service"</td><td>Good personalized tone. Could include location.</td><td>Keep spirit, add location: "Meet the HydroJet Drain Service Team — Ocean County's Drain Specialists"</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Good. Keep FAQ focused on company trust questions: licenses, service areas, response time.</td><td>FAQ questions for About page: "Is HydroJet Drain Service licensed and insured in NJ?", "What areas do you serve?", "How long have you been in business?", "Do you offer emergency service?"</td></tr>
-        <tr><td><strong>Critical Content Gap</strong></td><td>Unknown from audit</td><td>About page should show NJ contractor license number</td><td>Add: "NJ Home Improvement Contractor License: [number]" or "NJ Plumbing License: [number]". This is legally required on marketing materials in NJ and is an EEAT trust signal for Google.</td></tr>
-        <tr><td><strong>Images</strong></td><td>6 images</td><td>About page should have team photos, not stock images</td><td>Add real photos of the owner/technicians. Each photo should have descriptive alt text: "HydroJet Drain Service owner [name] licensed NJ drain specialist". Real team photos significantly improve trust and EEAT scores.</td></tr>
-        <tr><td><strong>Content Flow</strong></td><td>2,603 words — good length</td><td>About pages with personal story convert better for local service businesses</td><td>Add a "Our Story" section: when the company started, what motivated the owner, why they specialize in hydro jetting. Personal narrative builds connection with local customers.</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 10: TOMS RIVER AREA -->
-  <div class="card" style="border-left:5px solid #E65100">
-    <div class="card-title" style="font-size:15px">📍 Toms River Area Page — /areas-served/toms-river/ <span class="badge badge-orange">HIGH: pos 23.0, 6,970 impr</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title</strong></td><td>"Same-Day Sewer &amp; Drain Services in Toms River, NJ | 10% Off for First Responders..."</td><td>Good structure but truncated and the offer takes priority over the service.</td><td>"Sewer &amp; Drain Service in Toms River, NJ | Same-Day | HydroJet Drain Service"</td></tr>
-        <tr><td><strong>Meta</strong></td><td>"Hydro Jet Drain Service offers same-day sewer &amp; drain services in Toms River, NJ. First responders who hire us get 10% off all our..." (truncated)</td><td>Truncated. The 10% off offer dominates — leading with services would improve CTR for non-responder searchers.</td><td>"Same-day drain and sewer service in Toms River, NJ. Hydro jetting, drain cleaning, sewer repair, and trenchless pipe work. Licensed NJ contractor. Call for free estimate."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"The Leading Drain &amp; Sewer Expert in Toms River, NJ"</td><td>"Leading" is an unverifiable superlative. Google quality raters flag unsupported claims.</td><td>"Drain and Sewer Service in Toms River, NJ — Residential and Commercial"</td></tr>
-        <tr><td><strong>FAQ Schema</strong></td><td style="color:var(--green)">Present — good</td><td>Keep and make questions Toms River-specific</td><td>FAQ: "What drain services do you offer in Toms River?", "How quickly can you respond to drain emergencies in Toms River?", "Do you serve all of Toms River including the barrier islands?"</td></tr>
-        <tr><td><strong>Local Content Gap</strong></td><td>2,538 words total</td><td>Unknown if content is Toms River-specific or generic "any city" copy</td><td>Add: (1) Toms River neighborhoods served (Downtown, North Dover, Silver Ridge, Pine Beach area), (2) Common drain issues specific to Toms River (older housing stock, proximity to waterways), (3) Reference to local streets or landmarks for geo-relevance signal.</td></tr>
-        <tr><td><strong>Images</strong></td><td>4 images</td><td>Area pages with local photos rank better</td><td>Add one photo taken in Toms River (a job photo with recognizable location if possible). Alt: "drain cleaning service in Toms River NJ residential job"</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 11: ABERDEEN TOWNSHIP -->
-  <div class="card" style="border-left:5px solid #2E7D32">
-    <div class="card-title" style="font-size:15px">📍 Aberdeen Township — /areas-served/aberdeen-township/ <span class="badge badge-green">Near page 1: pos 9.5 — QUICK WIN</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title</strong></td><td>"Trusted Drain and Sewer Expert in Aberdeen Township, NJ | Discounts Available"</td><td>Good structure, specific city. "Discounts Available" is vague — which discounts?</td><td>"Drain and Sewer Service in Aberdeen Township, NJ | Same-Day | HydroJet Drain Service" — cleaner and uses consistent brand name</td></tr>
-        <tr><td><strong>Meta</strong></td><td>"When you need a reliable drain and sewer expert in Aberdeen Township, NJ, Hydro Jet Drain Service delivers powerful, lasting resul..." (truncated)</td><td>Truncated. Starts with "When you need..." which is weak copy.</td><td>"Expert drain and sewer service in Aberdeen Township, NJ. Hydro jetting, drain cleaning, trenchless repair. Same-day response. Licensed NJ contractor. Call for free estimate."</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td style="color:var(--red)">MISSING — despite having FAQ H2 headings like "Aberdeen Township's Frequently Asked Sewer and Drain Questions"</td><td style="color:var(--red)">This is the main quick win. The page ranks pos 9.5 and has FAQ content but no JSON-LD FAQPage schema. Adding schema could push this to position 1-5 for Aberdeen Township drain queries.</td><td>Add FAQPage JSON-LD schema immediately using the existing FAQ questions on the page. This is a 30-minute fix with potentially large ranking impact.</td></tr>
-        <tr><td><strong>H1</strong></td><td>"The Drain and Sewer Expert in Aberdeen Township, NJ That Can Handle Any..." (truncated in audit)</td><td>H1 gets cut off — ensure the full H1 is visible and doesn't create odd truncation on mobile</td><td>Verify H1 renders fully on mobile. Suggested: "Drain and Sewer Expert in Aberdeen Township, NJ — Any Size Job"</td></tr>
-        <tr><td><strong>Images</strong></td><td>4 images, all with alt text</td><td>Add Aberdeen Township-specific context to alt text</td><td>Update alt texts to include Aberdeen Township. Add one local image if available.</td></tr>
-        <tr><td><strong>CTR Optimization</strong></td><td>0 clicks despite pos 9.5!</td><td>The page ranks well but gets no clicks. This is a title/meta CTR problem — the listing in search results isn't compelling enough to click.</td><td>The title fix above + adding a specific offer ("Same-day service", "Free estimates") to the meta description should immediately improve CTR from position 9.</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 12: BEACHWOOD -->
-  <div class="card" style="border-left:5px solid #2E7D32">
-    <div class="card-title" style="font-size:15px">📍 Beachwood — /areas-served/beachwood/ <span class="badge badge-green">Near page 1: pos 11.9 — QUICK WIN</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title</strong></td><td>"Drain and Sewer Expert in Beachwood, NJ | Customer-First Approach"</td><td>"Customer-First Approach" is a generic claim with no keyword value</td><td>"Drain and Sewer Service in Beachwood, NJ | Same-Day | HydroJet Drain Service"</td></tr>
-        <tr><td><strong>Meta</strong></td><td>"Residents and businesses rely on Hydro Jet Drain Service, the premier drain and sewer expert in Beachwood, NJ. Call us today to ge..." (truncated)</td><td>"Premier" is an unverifiable superlative. Truncated.</td><td>"Fast drain and sewer service in Beachwood, NJ. Residential and commercial. Hydro jetting, drain cleaning, sewer repair. Same-day available. Licensed NJ contractor. Free estimate."</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td style="color:var(--red)">MISSING</td><td style="color:var(--red)">Same issue as Aberdeen. Page ranks pos 11.9 with no FAQPage schema. Adding schema = potential page 1 push.</td><td>Add FAQPage JSON-LD schema. Questions: "Do you offer drain service in Beachwood NJ?", "How much does drain cleaning cost in Beachwood?", "Do you offer same-day service in Beachwood?"</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Trusted Local Drain &amp; Sewer Expert in Beachwood, NJ"</td><td>Good — has location and service type. Minor improvement possible.</td><td>Good as-is. Just ensure it renders correctly on mobile (Beachwood is a coastal community — mention seasonal service demand).</td></tr>
-        <tr><td><strong>Local Content</strong></td><td>2,658 words (highest word count in audit)</td><td>High word count but is the content Beachwood-specific or generic?</td><td>Add Beachwood-specific content: the community's proximity to Toms River waterway, older ranch-style homes common in Beachwood (1960s-1980s housing stock), seasonal drainage issues from the waterfront.</td></tr>
-        <tr><td><strong>CTR Fix</strong></td><td>0 clicks despite pos 11.9</td><td>Same CTR problem as Aberdeen. Good position, not getting clicks.</td><td>Title and meta updates above should fix CTR. Also consider: does the title appear compelling in search results? "Same-Day Service in Beachwood NJ" is more clickable than "Customer-First Approach".</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- PAGE 13: POINT PLEASANT BEACH -->
-  <div class="card" style="border-left:5px solid #E65100">
-    <div class="card-title" style="font-size:15px">📍 Point Pleasant Beach — /areas-served/point-pleasant-beach/ <span class="badge badge-orange">HIGH: pos 18.3, 3,145 impr</span></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Element</th><th>Current State</th><th>Issue</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Title — TYPO</strong></td><td>"Sewer &amp; Drain Services in <strong>Poisant Beach</strong>, NJ | We Get The Job Right Done The Firs..." (truncated)</td><td style="color:var(--red)">CRITICAL TYPO: "Poisant Beach" should be "Point Pleasant Beach". This is a keyword error that prevents the page from ranking for "Point Pleasant Beach" queries. Also truncated.</td><td>"Sewer &amp; Drain Service in Point Pleasant Beach NJ | HydroJet Drain Service"</td></tr>
-        <tr><td><strong>Meta — TYPO</strong></td><td>"Hydro Jet Drain Service offers professional sewer &amp; drain services in <strong>Poisant Beach</strong>, NJ."</td><td style="color:var(--red)">Same "Poisant Beach" typo in meta description. Both title and meta must be corrected immediately — this is why the page likely underperforms despite 3,145 impressions.</td><td>"Professional sewer and drain service in Point Pleasant Beach, NJ. Hydro jetting, drain cleaning, trenchless repair. Same-day response for shore community emergencies. Free estimate."</td></tr>
-        <tr><td><strong>H1</strong></td><td>"Point Pleasant Beach Sewer &amp; Drain Specialists"</td><td>Good — correct spelling in H1. The typo is only in title and meta.</td><td>H1 is fine. Fix title and meta to match H1's correct spelling.</td></tr>
-        <tr><td><strong>FAQPage Schema</strong></td><td style="color:var(--red)">MISSING</td><td>3,145 impressions at position 18 with no FAQ schema</td><td>Add FAQPage schema. Shore community angle: "Do you service Point Pleasant Beach seasonal properties?", "Can you do emergency drain service at the Jersey Shore?", "Do you work on commercial properties on the boardwalk?"</td></tr>
-        <tr><td><strong>Shore Community Angle</strong></td><td>2,283 words</td><td>Shore community has unique plumbing challenges not captured in generic content</td><td>Add: vacation property maintenance angle, seasonal drain issues, saltwater corrosion context for Point Pleasant Beach homes, boardwalk/commercial property drain needs.</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <!-- UNIVERSAL QUICK WINS SUMMARY -->
-  <div class="card" style="background:#E8F5E9;border:2px solid var(--green)">
-    <div class="card-title" style="color:var(--green)">✅ Quick Wins Summary — Fixes Ranked by Impact vs Effort</div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Fix</th><th>Pages Affected</th><th>Time Required</th><th>Expected Impact</th></tr></thead>
-      <tbody>
-        <tr><td><strong>1. Fix "Poisant Beach" typo</strong></td><td>/areas-served/point-pleasant-beach/ title and meta</td><td>5 minutes</td><td>Immediate keyword matching for "Point Pleasant Beach" queries — typo may be causing 0 clicks</td></tr>
-        <tr><td><strong>2. Fix "Tom's River" typos</strong></td><td>/services/pipe-bursting/ and /services/drain-snaking/ title and meta</td><td>10 minutes</td><td>Correct local keyword matching for Toms River searches</td></tr>
-        <tr><td><strong>3. Fix Contact page title and H1</strong></td><td>/contact-us/</td><td>10 minutes</td><td>Should move from position 59 to top 20-30 within weeks</td></tr>
-        <tr><td><strong>4. Add FAQPage schema to Aberdeen Township</strong></td><td>/areas-served/aberdeen-township/</td><td>30 minutes</td><td>Currently pos 9.5 with 0 clicks — schema + CTR fix could push to page 1</td></tr>
-        <tr><td><strong>5. Add FAQPage schema to Beachwood</strong></td><td>/areas-served/beachwood/</td><td>30 minutes</td><td>Currently pos 11.9 with 0 clicks — schema + CTR fix could push to page 1</td></tr>
-        <tr><td><strong>6. Add FAQPage schema to Homepage</strong></td><td>/ (homepage)</td><td>30 minutes</td><td>FAQ H2s exist but no JSON-LD — adding schema enables PAA and AI Overviews for 81K impression page</td></tr>
-        <tr><td><strong>7. Add FAQPage schema to Drain Cleaning</strong></td><td>/services/drain-cleaning/</td><td>30 minutes</td><td>2,629 words but no schema — direct revenue service page needs this</td></tr>
-        <tr><td><strong>8. Add FAQPage schema to Point Pleasant Beach</strong></td><td>/areas-served/point-pleasant-beach/</td><td>30 minutes</td><td>3,145 impressions at pos 18 with no FAQ schema</td></tr>
-        <tr><td><strong>9. Optimize homepage title tag</strong></td><td>/</td><td>10 minutes</td><td>81K impressions with 0.15% CTR — better title could double clicks</td></tr>
-        <tr><td><strong>10. Add cost sections to all service pages</strong></td><td>All 6 service pages</td><td>2 hours total</td><td>Price queries showing in GSC — pages without pricing miss commercial-intent clicks</td></tr>
+        <tr><td>Phone number click-to-call in header</td><td>Phone CTAs present on all pages</td><td>Ensure phone number is large and click-to-call on mobile. Add "24/7" label if emergency service is offered.</td><td><span class="badge badge-orange">Verify</span></td></tr>
+        <tr><td>Mid-page CTA on service pages</td><td>Unknown — CTAs may only be at bottom</td><td>Add a CTA box after every 300-400 words of content. Example: "Need this service today? We serve Ocean County NJ same-day. Call [phone]."</td><td><span class="badge badge-orange">High</span></td></tr>
+        <tr><td>Emergency service callout</td><td>Not confirmed on all pages</td><td>Add a red callout box on drain cleaning, hydro jetting, and sewer repair pages: "Drain backed up? Emergency same-day service in Ocean County. Call [phone]."</td><td><span class="badge badge-orange">High</span></td></tr>
+        <tr><td>Offer visibility ($50 off, 10% off)</td><td>Offers mentioned in titles but may not be prominent on pages</td><td>Each page with an offer in the title must have that offer prominently displayed near the top of the page as a callout box. Tie the CTA directly to it.</td><td><span class="badge badge-orange">High</span></td></tr>
+        <tr><td>Services hub — NO FORM</td><td style="color:var(--red)">No form on /services/ page</td><td>Add contact form or at minimum a click-to-call button. The services page has 2,831 words but no form — a significant conversion gap.</td><td><span class="badge badge-red">Critical</span></td></tr>
+        <tr><td>Blog page CTAs</td><td>Blog index likely has limited CTAs</td><td>Add a sidebar or footer CTA on every blog post: "Need professional drain service in Ocean County? Call HydroJet: [phone]." Each blog post should convert readers to leads.</td><td><span class="badge badge-gray">Medium</span></td></tr>
+        <tr><td>Trust signal near CTAs</td><td>Not confirmed</td><td>Add near every CTA: "Licensed NJ Contractor | NJ License #[number] | Insured &amp; Bonded". Trust signals near CTAs increase conversion rates.</td><td><span class="badge badge-gray">Medium</span></td></tr>
       </tbody>
     </table></div>
   </div>
 </div>
 
+<script>
+function filterDA(p) {
+  document.querySelectorAll('[data-da]').forEach(b => b.classList.remove('active'));
+  document.querySelector('[data-da="'+p+'"]').classList.add('active');
+  document.querySelectorAll('#da-tbody tr').forEach(row => {
+    if (p === 'ALL') { row.style.display = ''; return; }
+    const badge = row.querySelector('.badge');
+    row.style.display = badge && badge.textContent.trim() === p ? '' : 'none';
+  });
+}
+</script>
+
+
 </body>
-</html>
